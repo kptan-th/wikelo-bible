@@ -6,6 +6,7 @@
     <title>THE BIBLE OF WIKELO - Star Citizen Checklist</title>
     <!-- Imports Google Sans & Orbitron/Montserrat fallbacks -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -45,19 +46,54 @@
             
             <!-- Quick Navigation / Filters Bar -->
             <div class="filter-bar">
-                <div class="search-wrapper">
-                    <input type="text" id="search-input" placeholder="Search covenants (ship, armor, weapon, or material)...">
-                    <span class="search-icon">🔍</span>
+                <div class="search-and-view">
+                    <div class="search-wrapper">
+                        <input type="text" id="search-input" placeholder="Search covenants (ship, armor, weapon, or material)...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <button class="view-toggle-btn" id="view-toggle-btn" title="Toggle Card/List View">
+                        <span class="view-mode-icon">📋</span> List View
+                    </button>
                 </div>
-                <div class="filter-tags">
-                    <button class="filter-tag active" data-filter="all">All</button>
-                    <button class="filter-tag" data-filter="Ships">Vessels</button>
-                    <button class="filter-tag" data-filter="Gear">Armor</button>
-                    <button class="filter-tag" data-filter="Weapons">Weapons</button>
-                    <button class="filter-tag" data-filter="Misc">Miscellany</button>
-                    <button class="filter-tag" data-filter="craftable">Ready to Exchange</button>
-                    <button class="filter-tag" data-filter="incomplete">Missing Materials</button>
-                    <button class="filter-tag" data-filter="completed">Completed</button>
+                
+                <div class="checkbox-filters-group">
+                    <span class="filter-group-label">Categories:</span>
+                    <label class="filter-checkbox-label">
+                        <input type="checkbox" class="category-filter-checkbox" value="Ships" checked>
+                        <span class="checkbox-custom"></span> Vessels
+                    </label>
+                    <label class="filter-checkbox-label">
+                        <input type="checkbox" class="category-filter-checkbox" value="Gear" checked>
+                        <span class="checkbox-custom"></span> Armor
+                    </label>
+                    <label class="filter-checkbox-label">
+                        <input type="checkbox" class="category-filter-checkbox" value="Weapons" checked>
+                        <span class="checkbox-custom"></span> Weapons
+                    </label>
+                    <label class="filter-checkbox-label">
+                        <input type="checkbox" class="category-filter-checkbox" value="Misc" checked>
+                        <span class="checkbox-custom"></span> Miscellany
+                    </label>
+                    <label class="filter-checkbox-label">
+                        <input type="checkbox" class="category-filter-checkbox" value="Custom" checked>
+                        <span class="checkbox-custom"></span> Custom
+                    </label>
+                </div>
+
+                <div class="checkbox-filters-group status-group">
+                    <span class="filter-group-label">Status:</span>
+                    <label class="filter-checkbox-label">
+                        <input type="checkbox" id="filter-ready" class="status-filter-checkbox">
+                        <span class="checkbox-custom"></span> Ready to Exchange
+                    </label>
+                    <label class="filter-checkbox-label">
+                        <input type="checkbox" id="filter-missing" class="status-filter-checkbox">
+                        <span class="checkbox-custom"></span> Missing Materials
+                    </label>
+                    <label class="filter-checkbox-label">
+                        <input type="checkbox" id="filter-completed" class="status-filter-checkbox">
+                        <span class="checkbox-custom"></span> Completed
+                    </label>
                 </div>
             </div>
         </header>
@@ -81,922 +117,30 @@
                 </div>
                 <p class="sidebar-desc">Specify the quantities of materials in your Freight Elevator to dynamically calculate exchange requirements.</p>
                 
+                <!-- OCR Drag and Drop Area -->
+                <div class="ocr-section">
+                    <div class="ocr-dropzone" id="ocr-dropzone">
+                        <span class="ocr-icon">📸</span>
+                        <span class="ocr-text">Scan SC Terminal Screen</span>
+                        <span class="ocr-subtext">Drop screenshot or click to upload</span>
+                        <input type="file" id="ocr-file-input" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="ocr-status" id="ocr-status" style="display: none;">
+                        <div class="spinner"></div>
+                        <span id="ocr-status-text">Scanning image...</span>
+                    </div>
+                </div>
+
                 <div class="sidebar-search-wrapper">
                     <input type="text" id="inventory-search" placeholder="Search inventory materials...">
                 </div>
 
-                <div class="inventory-accordions">
-                    <!-- Categories Accordion -->
-                    
-                    <div class="accordion-item" data-category="rep_currency">
-                        <button class="accordion-trigger">
-                            <span>Reputation & Scrip</span>
-                            <span class="chevron">▼</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="input-grid">
-                                
-                                <div class="input-wrapper" data-item-name="Wikelo Favor">
-                                    <label class="input-label" title="Wikelo Favor">Wikelo Favor</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Wikelo Favor', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Wikelo Favor" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Wikelo Favor', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="MG Scrip">
-                                    <label class="input-label" title="MG Scrip">MG Scrip</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('MG Scrip', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="MG Scrip" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('MG Scrip', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Council Scrip">
-                                    <label class="input-label" title="Council Scrip">Council Scrip</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Council Scrip', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Council Scrip" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Council Scrip', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="ASD Secure Drive">
-                                    <label class="input-label" title="ASD Secure Drive">ASD Secure Drive</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('ASD Secure Drive', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="ASD Secure Drive" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('ASD Secure Drive', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Polaris Bit">
-                                    <label class="input-label" title="Polaris Bit">Polaris Bit</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Polaris Bit', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Polaris Bit" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Polaris Bit', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item" data-category="ores_mats">
-                        <button class="accordion-trigger">
-                            <span>Ores & Minerals</span>
-                            <span class="chevron">▼</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="input-grid">
-                                
-                                <div class="input-wrapper" data-item-name="Carinite">
-                                    <label class="input-label" title="Carinite">Carinite</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Carinite', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Carinite" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Carinite', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Carinite (Pure)">
-                                    <label class="input-label" title="Carinite (Pure)">Carinite (Pure)</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Carinite (Pure)', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Carinite (Pure)" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Carinite (Pure)', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Saldynium">
-                                    <label class="input-label" title="Saldynium">Saldynium</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Saldynium', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Saldynium" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Saldynium', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Jaclium">
-                                    <label class="input-label" title="Jaclium">Jaclium</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Jaclium', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Jaclium" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Jaclium', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Sadaryx">
-                                    <label class="input-label" title="Sadaryx">Sadaryx</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Sadaryx', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Sadaryx" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Sadaryx', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Bluemoon Fungus">
-                                    <label class="input-label" title="Bluemoon Fungus">Bluemoon Fungus</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Bluemoon Fungus', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Bluemoon Fungus" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Bluemoon Fungus', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="SCU Copper, Tungsten, Corundum">
-                                    <label class="input-label" title="SCU Copper, Tungsten, Corundum">SCU Copper, Tungsten, Corundum</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('SCU Copper, Tungsten, Corundum', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="SCU Copper, Tungsten, Corundum" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('SCU Copper, Tungsten, Corundum', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item" data-category="medals_tech">
-                        <button class="accordion-trigger">
-                            <span>Medals & Tech Relics</span>
-                            <span class="chevron">▼</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="input-grid">
-                                
-                                <div class="input-wrapper" data-item-name="DCHS-05 Comp-Board">
-                                    <label class="input-label" title="DCHS-05 Comp-Board">DCHS-05 Comp-Board</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('DCHS-05 Comp-Board', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="DCHS-05 Comp-Board" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('DCHS-05 Comp-Board', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Large Artifact Fragment (Pristine)">
-                                    <label class="input-label" title="Large Artifact Fragment (Pristine)">Large Artifact Fragment (Pristine)</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Large Artifact Fragment (Pristine)', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Large Artifact Fragment (Pristine)" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Large Artifact Fragment (Pristine)', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Government Cartography Agency Medal (Pristine)">
-                                    <label class="input-label" title="Government Cartography Agency Medal (Pristine)">Government Cartography Agency Medal (Pristine)</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Government Cartography Agency Medal (Pristine)', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Government Cartography Agency Medal (Pristine)" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Government Cartography Agency Medal (Pristine)', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Tevarin War Service Marker (Pristine)">
-                                    <label class="input-label" title="Tevarin War Service Marker (Pristine)">Tevarin War Service Marker (Pristine)</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Tevarin War Service Marker (Pristine)', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Tevarin War Service Marker (Pristine)" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Tevarin War Service Marker (Pristine)', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Tevarin War Service Medal (Pristine)">
-                                    <label class="input-label" title="Tevarin War Service Medal (Pristine)">Tevarin War Service Medal (Pristine)</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Tevarin War Service Medal (Pristine)', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Tevarin War Service Medal (Pristine)" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Tevarin War Service Medal (Pristine)', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="UEE 6th Platoon Medal (Pristine)">
-                                    <label class="input-label" title="UEE 6th Platoon Medal (Pristine)">UEE 6th Platoon Medal (Pristine)</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('UEE 6th Platoon Medal (Pristine)', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="UEE 6th Platoon Medal (Pristine)" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('UEE 6th Platoon Medal (Pristine)', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Pristine Medal">
-                                    <label class="input-label" title="Pristine Medal">Pristine Medal</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Pristine Medal', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Pristine Medal" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Pristine Medal', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Ace Interceptor Helmet">
-                                    <label class="input-label" title="Ace Interceptor Helmet">Ace Interceptor Helmet</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Ace Interceptor Helmet', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Ace Interceptor Helmet" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Ace Interceptor Helmet', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item" data-category="fauna_loot">
-                        <button class="accordion-trigger">
-                            <span>Creature & Fauna Loot</span>
-                            <span class="chevron">▼</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="input-grid">
-                                
-                                <div class="input-wrapper" data-item-name="Tundra Kopion Horn">
-                                    <label class="input-label" title="Tundra Kopion Horn">Tundra Kopion Horn</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Tundra Kopion Horn', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Tundra Kopion Horn" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Tundra Kopion Horn', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Snow Kopion Horn">
-                                    <label class="input-label" title="Snow Kopion Horn">Snow Kopion Horn</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Snow Kopion Horn', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Snow Kopion Horn" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Snow Kopion Horn', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Desert Kopion Horn">
-                                    <label class="input-label" title="Desert Kopion Horn">Desert Kopion Horn</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Desert Kopion Horn', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Desert Kopion Horn" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Desert Kopion Horn', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Irradiated Kopion Horn">
-                                    <label class="input-label" title="Irradiated Kopion Horn">Irradiated Kopion Horn</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Irradiated Kopion Horn', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Irradiated Kopion Horn" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Irradiated Kopion Horn', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Valakkar Pearls">
-                                    <label class="input-label" title="Valakkar Pearls">Valakkar Pearls</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Valakkar Pearls', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Valakkar Pearls" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Valakkar Pearls', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Valakkar Fangs">
-                                    <label class="input-label" title="Valakkar Fangs">Valakkar Fangs</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Valakkar Fangs', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Valakkar Fangs" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Valakkar Fangs', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Irradiated Valakkar Pearl (Grade AA)">
-                                    <label class="input-label" title="Irradiated Valakkar Pearl (Grade AA)">Irradiated Valakkar Pearl (Grade AA)</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Irradiated Valakkar Pearl (Grade AA)', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Irradiated Valakkar Pearl (Grade AA)" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Irradiated Valakkar Pearl (Grade AA)', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Irradiated Valakkar Pearl (Grade AAA)">
-                                    <label class="input-label" title="Irradiated Valakkar Pearl (Grade AAA)">Irradiated Valakkar Pearl (Grade AAA)</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Irradiated Valakkar Pearl (Grade AAA)', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Irradiated Valakkar Pearl (Grade AAA)" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Irradiated Valakkar Pearl (Grade AAA)', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Irradiated Valakkar Fang (Adult)">
-                                    <label class="input-label" title="Irradiated Valakkar Fang (Adult)">Irradiated Valakkar Fang (Adult)</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Irradiated Valakkar Fang (Adult)', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Irradiated Valakkar Fang (Adult)" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Irradiated Valakkar Fang (Adult)', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Irradiated Valakkar Fang (Juvenile)">
-                                    <label class="input-label" title="Irradiated Valakkar Fang (Juvenile)">Irradiated Valakkar Fang (Juvenile)</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Irradiated Valakkar Fang (Juvenile)', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Irradiated Valakkar Fang (Juvenile)" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Irradiated Valakkar Fang (Juvenile)', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Irradiated Valakkar Fang (Apex)">
-                                    <label class="input-label" title="Irradiated Valakkar Fang (Apex)">Irradiated Valakkar Fang (Apex)</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Irradiated Valakkar Fang (Apex)', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Irradiated Valakkar Fang (Apex)" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Irradiated Valakkar Fang (Apex)', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Yormandi Eye">
-                                    <label class="input-label" title="Yormandi Eye">Yormandi Eye</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Yormandi Eye', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Yormandi Eye" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Yormandi Eye', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Yormandi Tongue">
-                                    <label class="input-label" title="Yormandi Tongue">Yormandi Tongue</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Yormandi Tongue', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Yormandi Tongue" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Yormandi Tongue', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item" data-category="base_components">
-                        <button class="accordion-trigger">
-                            <span>Base Gear & Components</span>
-                            <span class="chevron">▼</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="input-grid">
-                                
-                                <div class="input-wrapper" data-item-name="ATLS Cool Metal">
-                                    <label class="input-label" title="ATLS Cool Metal">ATLS Cool Metal</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('ATLS Cool Metal', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="ATLS Cool Metal" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('ATLS Cool Metal', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="ATLS Orange Line">
-                                    <label class="input-label" title="ATLS Orange Line">ATLS Orange Line</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('ATLS Orange Line', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="ATLS Orange Line" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('ATLS Orange Line', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="ATLS Skins">
-                                    <label class="input-label" title="ATLS Skins">ATLS Skins</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('ATLS Skins', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="ATLS Skins" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('ATLS Skins', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="ATLS Snowland">
-                                    <label class="input-label" title="ATLS Snowland">ATLS Snowland</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('ATLS Snowland', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="ATLS Snowland" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('ATLS Snowland', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Antium Arms">
-                                    <label class="input-label" title="Antium Arms">Antium Arms</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Antium Arms', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Antium Arms" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Antium Arms', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Antium Base Set">
-                                    <label class="input-label" title="Antium Base Set">Antium Base Set</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Antium Base Set', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Antium Base Set" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Antium Base Set', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Antium Core">
-                                    <label class="input-label" title="Antium Core">Antium Core</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Antium Core', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Antium Core" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Antium Core', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Antium Helmet">
-                                    <label class="input-label" title="Antium Helmet">Antium Helmet</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Antium Helmet', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Antium Helmet" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Antium Helmet', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Antium Legs">
-                                    <label class="input-label" title="Antium Legs">Antium Legs</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Antium Legs', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Antium Legs" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Antium Legs', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Argo ATLS">
-                                    <label class="input-label" title="Argo ATLS">Argo ATLS</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Argo ATLS', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Argo ATLS" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Argo ATLS', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Argo ATLS GEO">
-                                    <label class="input-label" title="Argo ATLS GEO">Argo ATLS GEO</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Argo ATLS GEO', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Argo ATLS GEO" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Argo ATLS GEO', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Argo ATLS IKTI">
-                                    <label class="input-label" title="Argo ATLS IKTI">Argo ATLS IKTI</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Argo ATLS IKTI', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Argo ATLS IKTI" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Argo ATLS IKTI', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Boomtube Rocket Launcher">
-                                    <label class="input-label" title="Boomtube Rocket Launcher">Boomtube Rocket Launcher</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Boomtube Rocket Launcher', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Boomtube Rocket Launcher" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Boomtube Rocket Launcher', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Corbel Set Mire (Helmet, Core, Legs, Arms)">
-                                    <label class="input-label" title="Corbel Set Mire (Helmet, Core, Legs, Arms)">Corbel Set Mire (Helmet, Core, Legs, Arms)</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Corbel Set Mire (Helmet, Core, Legs, Arms)', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Corbel Set Mire (Helmet, Core, Legs, Arms)" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Corbel Set Mire (Helmet, Core, Legs, Arms)', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="F55 LMG">
-                                    <label class="input-label" title="F55 LMG">F55 LMG</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('F55 LMG', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="F55 LMG" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('F55 LMG', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Fresnel Energy LMG">
-                                    <label class="input-label" title="Fresnel Energy LMG">Fresnel Energy LMG</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Fresnel Energy LMG', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Fresnel Energy LMG" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Fresnel Energy LMG', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Geist Armor Arms ASD Edition">
-                                    <label class="input-label" title="Geist Armor Arms ASD Edition">Geist Armor Arms ASD Edition</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Geist Armor Arms ASD Edition', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Geist Armor Arms ASD Edition" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Geist Armor Arms ASD Edition', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Geist Armor Backpack ASD Edition">
-                                    <label class="input-label" title="Geist Armor Backpack ASD Edition">Geist Armor Backpack ASD Edition</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Geist Armor Backpack ASD Edition', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Geist Armor Backpack ASD Edition" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Geist Armor Backpack ASD Edition', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Geist Armor Core ASD Edition">
-                                    <label class="input-label" title="Geist Armor Core ASD Edition">Geist Armor Core ASD Edition</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Geist Armor Core ASD Edition', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Geist Armor Core ASD Edition" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Geist Armor Core ASD Edition', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Geist Armor Helmet ASD Edition">
-                                    <label class="input-label" title="Geist Armor Helmet ASD Edition">Geist Armor Helmet ASD Edition</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Geist Armor Helmet ASD Edition', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Geist Armor Helmet ASD Edition" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Geist Armor Helmet ASD Edition', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Geist Armor Legs ASD Edition">
-                                    <label class="input-label" title="Geist Armor Legs ASD Edition">Geist Armor Legs ASD Edition</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Geist Armor Legs ASD Edition', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Geist Armor Legs ASD Edition" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Geist Armor Legs ASD Edition', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Monde Arms">
-                                    <label class="input-label" title="Monde Arms">Monde Arms</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Monde Arms', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Monde Arms" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Monde Arms', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Monde Core">
-                                    <label class="input-label" title="Monde Core">Monde Core</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Monde Core', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Monde Core" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Monde Core', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Monde Helmet">
-                                    <label class="input-label" title="Monde Helmet">Monde Helmet</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Monde Helmet', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Monde Helmet" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Monde Helmet', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Monde Legs">
-                                    <label class="input-label" title="Monde Legs">Monde Legs</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Monde Legs', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Monde Legs" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Monde Legs', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="NN-13 Cannon">
-                                    <label class="input-label" title="NN-13 Cannon">NN-13 Cannon</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('NN-13 Cannon', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="NN-13 Cannon" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('NN-13 Cannon', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Novikov Backpack Mire">
-                                    <label class="input-label" title="Novikov Backpack Mire">Novikov Backpack Mire</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Novikov Backpack Mire', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Novikov Backpack Mire" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Novikov Backpack Mire', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Palatino Arms">
-                                    <label class="input-label" title="Palatino Arms">Palatino Arms</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Palatino Arms', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Palatino Arms" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Palatino Arms', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Palatino Backpack">
-                                    <label class="input-label" title="Palatino Backpack">Palatino Backpack</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Palatino Backpack', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Palatino Backpack" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Palatino Backpack', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Palatino Core">
-                                    <label class="input-label" title="Palatino Core">Palatino Core</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Palatino Core', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Palatino Core" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Palatino Core', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Palatino Helmet">
-                                    <label class="input-label" title="Palatino Helmet">Palatino Helmet</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Palatino Helmet', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Palatino Helmet" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Palatino Helmet', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Palatino Legs">
-                                    <label class="input-label" title="Palatino Legs">Palatino Legs</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Palatino Legs', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Palatino Legs" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Palatino Legs', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Parallax "Fun Military Skull" Energy Assault Rifle">
-                                    <label class="input-label" title="Parallax "Fun Military Skull" Energy Assault Rifle">Parallax "Fun Military Skull" Energy Assault Rifle</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Parallax "Fun Military Skull" Energy Assault Rifle', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Parallax "Fun Military Skull" Energy Assault Rifle" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Parallax "Fun Military Skull" Energy Assault Rifle', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Parallax Energy Assault Rifle">
-                                    <label class="input-label" title="Parallax Energy Assault Rifle">Parallax Energy Assault Rifle</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Parallax Energy Assault Rifle', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Parallax Energy Assault Rifle" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Parallax Energy Assault Rifle', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Prism Laser Shotgun">
-                                    <label class="input-label" title="Prism Laser Shotgun">Prism Laser Shotgun</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Prism Laser Shotgun', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Prism Laser Shotgun" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Prism Laser Shotgun', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Quantanium">
-                                    <label class="input-label" title="Quantanium">Quantanium</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Quantanium', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Quantanium" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Quantanium', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="R97 Shotgun">
-                                    <label class="input-label" title="R97 Shotgun">R97 Shotgun</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('R97 Shotgun', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="R97 Shotgun" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('R97 Shotgun', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="RCMBNT-PWL-1">
-                                    <label class="input-label" title="RCMBNT-PWL-1">RCMBNT-PWL-1</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('RCMBNT-PWL-1', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="RCMBNT-PWL-1" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('RCMBNT-PWL-1', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="RCMBNT-PWL-2">
-                                    <label class="input-label" title="RCMBNT-PWL-2">RCMBNT-PWL-2</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('RCMBNT-PWL-2', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="RCMBNT-PWL-2" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('RCMBNT-PWL-2', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="RCMBNT-PWL-3">
-                                    <label class="input-label" title="RCMBNT-PWL-3">RCMBNT-PWL-3</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('RCMBNT-PWL-3', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="RCMBNT-PWL-3" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('RCMBNT-PWL-3', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="RCMBNT-RGL-1">
-                                    <label class="input-label" title="RCMBNT-RGL-1">RCMBNT-RGL-1</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('RCMBNT-RGL-1', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="RCMBNT-RGL-1" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('RCMBNT-RGL-1', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="RCMBNT-RGL-2">
-                                    <label class="input-label" title="RCMBNT-RGL-2">RCMBNT-RGL-2</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('RCMBNT-RGL-2', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="RCMBNT-RGL-2" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('RCMBNT-RGL-2', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="RCMBNT-RGL-3">
-                                    <label class="input-label" title="RCMBNT-RGL-3">RCMBNT-RGL-3</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('RCMBNT-RGL-3', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="RCMBNT-RGL-3" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('RCMBNT-RGL-3', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="RCMBNT-XTL-1">
-                                    <label class="input-label" title="RCMBNT-XTL-1">RCMBNT-XTL-1</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('RCMBNT-XTL-1', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="RCMBNT-XTL-1" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('RCMBNT-XTL-1', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="RCMBNT-XTL-2">
-                                    <label class="input-label" title="RCMBNT-XTL-2">RCMBNT-XTL-2</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('RCMBNT-XTL-2', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="RCMBNT-XTL-2" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('RCMBNT-XTL-2', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="RCMBNT-XTL-3">
-                                    <label class="input-label" title="RCMBNT-XTL-3">RCMBNT-XTL-3</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('RCMBNT-XTL-3', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="RCMBNT-XTL-3" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('RCMBNT-XTL-3', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Strata Arms">
-                                    <label class="input-label" title="Strata Arms">Strata Arms</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Strata Arms', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Strata Arms" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Strata Arms', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Strata Backpack">
-                                    <label class="input-label" title="Strata Backpack">Strata Backpack</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Strata Backpack', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Strata Backpack" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Strata Backpack', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Strata Core">
-                                    <label class="input-label" title="Strata Core">Strata Core</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Strata Core', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Strata Core" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Strata Core', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Strata Helmet">
-                                    <label class="input-label" title="Strata Helmet">Strata Helmet</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Strata Helmet', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Strata Helmet" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Strata Helmet', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Strata Legs">
-                                    <label class="input-label" title="Strata Legs">Strata Legs</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Strata Legs', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Strata Legs" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Strata Legs', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Testudo Arms Turfwar">
-                                    <label class="input-label" title="Testudo Arms Turfwar">Testudo Arms Turfwar</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Testudo Arms Turfwar', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Testudo Arms Turfwar" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Testudo Arms Turfwar', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Testudo Backpack Turfwar">
-                                    <label class="input-label" title="Testudo Backpack Turfwar">Testudo Backpack Turfwar</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Testudo Backpack Turfwar', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Testudo Backpack Turfwar" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Testudo Backpack Turfwar', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Testudo Core Turfwar">
-                                    <label class="input-label" title="Testudo Core Turfwar">Testudo Core Turfwar</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Testudo Core Turfwar', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Testudo Core Turfwar" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Testudo Core Turfwar', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Testudo Helmet Turfwar">
-                                    <label class="input-label" title="Testudo Helmet Turfwar">Testudo Helmet Turfwar</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Testudo Helmet Turfwar', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Testudo Helmet Turfwar" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Testudo Helmet Turfwar', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Testudo Legs Turfwar">
-                                    <label class="input-label" title="Testudo Legs Turfwar">Testudo Legs Turfwar</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Testudo Legs Turfwar', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Testudo Legs Turfwar" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Testudo Legs Turfwar', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Tripledown Pistol">
-                                    <label class="input-label" title="Tripledown Pistol">Tripledown Pistol</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Tripledown Pistol', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Tripledown Pistol" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Tripledown Pistol', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Vanduul Metal">
-                                    <label class="input-label" title="Vanduul Metal">Vanduul Metal</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Vanduul Metal', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Vanduul Metal" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Vanduul Metal', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Vanduul Plating">
-                                    <label class="input-label" title="Vanduul Plating">Vanduul Plating</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Vanduul Plating', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Vanduul Plating" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Vanduul Plating', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Warden Backpack Monde">
-                                    <label class="input-label" title="Warden Backpack Monde">Warden Backpack Monde</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Warden Backpack Monde', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Warden Backpack Monde" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Warden Backpack Monde', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="input-wrapper" data-item-name="Zenith Laser Sniper Rifle">
-                                    <label class="input-label" title="Zenith Laser Sniper Rifle">Zenith Laser Sniper Rifle</label>
-                                    <div class="input-control">
-                                        <button class="qty-btn minus" onclick="adjustQty('Zenith Laser Sniper Rifle', -1)">-</button>
-                                        <input type="number" min="0" class="qty-input" data-item="Zenith Laser Sniper Rifle" value="0" onchange="onQtyChange(this)">
-                                        <button class="qty-btn plus" onclick="adjustQty('Zenith Laser Sniper Rifle', 1)">+</button>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
+                <div class="inventory-accordions" id="inventory-accordions-container">
+                    <!-- Accordions will be rendered dynamically by JavaScript -->
                 </div>
                 
                 <div class="sidebar-actions">
+                    <button class="action-btn" id="creator-btn" style="margin-bottom: 5px;">🛠️ Creator Sanctuary</button>
                     <button class="action-btn secondary" id="backup-btn">Backup / Restore</button>
                     <button class="action-btn danger" id="reset-btn">Reset All Inventory</button>
                 </div>
@@ -1019,6 +163,87 @@
                     <div class="modal-actions">
                         <button class="action-btn" id="import-btn">Import Data</button>
                         <button class="action-btn secondary" id="copy-btn">Copy Code</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Creator Modal -->
+        <div class="modal-overlay" id="creator-modal">
+            <div class="luxury-modal creator-modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Creator Sanctuary</h3>
+                    <button class="close-modal-btn" id="close-creator-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- Tab Navigation -->
+                    <div class="creator-tabs">
+                        <button class="creator-tab active" data-tab="create-material-tab">Create Material</button>
+                        <button class="creator-tab" data-tab="create-covenant-tab">Create Covenant</button>
+                        <button class="creator-tab" data-tab="manage-items-tab">Manage Custom Items</button>
+                    </div>
+
+                    <!-- Create Material Tab Content -->
+                    <div class="creator-tab-content active" id="create-material-tab">
+                        <form id="create-material-form" onsubmit="onCreateMaterial(event)">
+                            <div class="form-group">
+                                <label class="form-label">Material Name</label>
+                                <input type="text" id="new-material-name" required placeholder="e.g. Rare Artifact, Blue Carinite...">
+                            </div>
+                            <button type="submit" class="action-btn">Create Custom Material</button>
+                        </form>
+                    </div>
+
+                    <!-- Create Covenant Tab Content -->
+                    <div class="creator-tab-content" id="create-covenant-tab">
+                        <form id="create-covenant-form" onsubmit="onCreateCovenant(event)">
+                            <div class="form-group">
+                                <label class="form-label">Covenant/Ship Name</label>
+                                <input type="text" id="new-covenant-name" required placeholder="e.g. Aegis Avenger Wikelo Edition...">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Category</label>
+                                <select id="new-covenant-category" required>
+                                    <option value="Ships">Vessels (Ships)</option>
+                                    <option value="Gear">Armor</option>
+                                    <option value="Weapons">Weapons</option>
+                                    <option value="Misc">Miscellany</option>
+                                    <option value="Custom">Custom Category</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Contract/Mission Name</label>
+                                <input type="text" id="new-covenant-mission" required placeholder="e.g. Avenger Exchange Program...">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Custom Image (Optional)</label>
+                                <input type="file" id="new-covenant-image" accept="image/*" class="form-file-input">
+                                <div class="file-preview" id="new-covenant-image-preview"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Requirements (Select Materials & Quantities)</label>
+                                <div class="requirements-creator-list" id="requirements-creator-list">
+                                    <!-- Dynamic list of materials with quantity inputs -->
+                                </div>
+                            </div>
+                            <button type="submit" class="action-btn">Create Custom Covenant</button>
+                        </form>
+                    </div>
+
+                    <!-- Manage Items Tab Content -->
+                    <div class="creator-tab-content" id="manage-items-tab">
+                        <div class="manage-list-section">
+                            <h4>Custom Covenants</h4>
+                            <ul class="custom-manage-list" id="custom-covenants-manage-list">
+                                <!-- list of custom covenants with delete button -->
+                            </ul>
+                        </div>
+                        <div class="manage-list-section" style="margin-top: 20px;">
+                            <h4>Custom Materials</h4>
+                            <ul class="custom-manage-list" id="custom-materials-manage-list">
+                                <!-- list of custom materials with delete button -->
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

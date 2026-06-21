@@ -1360,19 +1360,147 @@ const WIKELO_DATABASE = {
     }
   ]
 };
+const BASE_CATEGORIES = {
+  "rep_currency": {
+    "title": "Reputation & Scrip",
+    "items": [
+      "Wikelo Favor",
+      "MG Scrip",
+      "Council Scrip",
+      "ASD Secure Drive",
+      "Polaris Bit"
+    ]
+  },
+  "ores_mats": {
+    "title": "Ores & Minerals",
+    "items": [
+      "Carinite",
+      "Carinite (Pure)",
+      "Saldynium",
+      "Jaclium",
+      "Sadaryx",
+      "Bluemoon Fungus",
+      "SCU Copper, Tungsten, Corundum"
+    ]
+  },
+  "medals_tech": {
+    "title": "Medals & Tech Relics",
+    "items": [
+      "DCHS-05 Comp-Board",
+      "Large Artifact Fragment (Pristine)",
+      "Government Cartography Agency Medal (Pristine)",
+      "Tevarin War Service Marker (Pristine)",
+      "Tevarin War Service Medal (Pristine)",
+      "UEE 6th Platoon Medal (Pristine)",
+      "Pristine Medal",
+      "Ace Interceptor Helmet"
+    ]
+  },
+  "fauna_loot": {
+    "title": "Creature & Fauna Loot",
+    "items": [
+      "Tundra Kopion Horn",
+      "Snow Kopion Horn",
+      "Desert Kopion Horn",
+      "Irradiated Kopion Horn",
+      "Valakkar Pearls",
+      "Valakkar Fangs",
+      "Irradiated Valakkar Pearl (Grade AA)",
+      "Irradiated Valakkar Pearl (Grade AAA)",
+      "Irradiated Valakkar Fang (Adult)",
+      "Irradiated Valakkar Fang (Juvenile)",
+      "Irradiated Valakkar Fang (Apex)",
+      "Yormandi Eye",
+      "Yormandi Tongue"
+    ]
+  },
+  "base_components": {
+    "title": "Base Gear & Components",
+    "items": [
+      "ATLS Cool Metal",
+      "ATLS Orange Line",
+      "ATLS Skins",
+      "ATLS Snowland",
+      "Antium Arms",
+      "Antium Base Set",
+      "Antium Core",
+      "Antium Helmet",
+      "Antium Legs",
+      "Argo ATLS",
+      "Argo ATLS GEO",
+      "Argo ATLS IKTI",
+      "Boomtube Rocket Launcher",
+      "Corbel Set Mire (Helmet, Core, Legs, Arms)",
+      "F55 LMG",
+      "Fresnel Energy LMG",
+      "Geist Armor Arms ASD Edition",
+      "Geist Armor Backpack ASD Edition",
+      "Geist Armor Core ASD Edition",
+      "Geist Armor Helmet ASD Edition",
+      "Geist Armor Legs ASD Edition",
+      "Monde Arms",
+      "Monde Core",
+      "Monde Helmet",
+      "Monde Legs",
+      "NN-13 Cannon",
+      "Novikov Backpack Mire",
+      "Palatino Arms",
+      "Palatino Backpack",
+      "Palatino Core",
+      "Palatino Helmet",
+      "Palatino Legs",
+      "Parallax \"Fun Military Skull\" Energy Assault Rifle",
+      "Parallax Energy Assault Rifle",
+      "Prism Laser Shotgun",
+      "Quantanium",
+      "R97 Shotgun",
+      "RCMBNT-PWL-1",
+      "RCMBNT-PWL-2",
+      "RCMBNT-PWL-3",
+      "RCMBNT-RGL-1",
+      "RCMBNT-RGL-2",
+      "RCMBNT-RGL-3",
+      "RCMBNT-XTL-1",
+      "RCMBNT-XTL-2",
+      "RCMBNT-XTL-3",
+      "Strata Arms",
+      "Strata Backpack",
+      "Strata Core",
+      "Strata Helmet",
+      "Strata Legs",
+      "Testudo Arms Turfwar",
+      "Testudo Backpack Turfwar",
+      "Testudo Core Turfwar",
+      "Testudo Helmet Turfwar",
+      "Testudo Legs Turfwar",
+      "Tripledown Pistol",
+      "Vanduul Metal",
+      "Vanduul Plating",
+      "Warden Backpack Monde",
+      "Zenith Laser Sniper Rifle"
+    ]
+  }
+};
 
 // App State
 let appState = {
     inventory: {},
-    completedItems: []
+    completedItems: [],
+    customMaterials: [],
+    customCovenants: [],
+    viewMode: 'card'
 };
 
 // Initialize the Application
 window.addEventListener('DOMContentLoaded', () => {
     loadState();
     initTheme();
-    initInventoryInputs();
+    renderInventorySidebar();
+    updateViewToggleUI();
     bindEvents();
+    bindCreatorModalEvents();
+    initCreatorImagePreview();
+    initOCR();
     renderAll();
 });
 
@@ -1411,6 +1539,9 @@ function loadState() {
             appState = JSON.parse(saved);
             if (!appState.inventory) appState.inventory = {};
             if (!appState.completedItems) appState.completedItems = [];
+            if (!appState.customMaterials) appState.customMaterials = [];
+            if (!appState.customCovenants) appState.customCovenants = [];
+            if (!appState.viewMode) appState.viewMode = 'card';
         } catch (e) {
             console.error("Error loading localStorage", e);
         }
@@ -1422,25 +1553,18 @@ function saveState() {
     localStorage.setItem('wikelo_bible_state', JSON.stringify(appState));
 }
 
-// Initialize Qty Inputs from DB & State
-function initInventoryInputs() {
-    const inputs = document.querySelectorAll('.qty-input');
-    inputs.forEach(input => {
-        const itemName = input.dataset.item;
-        const savedVal = appState.inventory[itemName] || 0;
-        input.value = savedVal;
-    });
-}
-
 // Adjust quantity via +/- buttons
 function adjustQty(itemName, amount) {
+    let current = parseInt(appState.inventory[itemName]) || 0;
+    let target = Math.max(0, current + amount);
+    appState.inventory[itemName] = target;
+    
+    // Update input values on page
     const inputs = document.querySelectorAll(`[data-item="${itemName}"]`);
     inputs.forEach(input => {
-        let current = parseInt(input.value) || 0;
-        let target = Math.max(0, current + amount);
         input.value = target;
-        appState.inventory[itemName] = target;
     });
+    
     saveState();
     renderAll();
 }
@@ -1461,26 +1585,131 @@ function onQtyChange(inputElement) {
     renderAll();
 }
 
-// Filter and Render Catalog Cards
+// Convert MG Scrip to Wikelo Favor (50:1)
+function convertMgToFav(event) {
+    if (event) event.preventDefault();
+    const currentMg = appState.inventory['MG Scrip'] || 0;
+    if (currentMg < 50) {
+        showToast("You need at least 50 MG Scrip to convert!", "warning");
+        return;
+    }
+    
+    const favToAdd = Math.floor(currentMg / 50);
+    const mgUsed = favToAdd * 50;
+    const currentFav = appState.inventory['Wikelo Favor'] || 0;
+    
+    appState.inventory['MG Scrip'] = currentMg - mgUsed;
+    appState.inventory['Wikelo Favor'] = currentFav + favToAdd;
+    
+    saveState();
+    renderInventorySidebar();
+    renderAll();
+    
+    showToast(`Converted ${mgUsed} MG Scrip into ${favToAdd} Wikelo Favor!`, "success");
+}
+
+// Get Merged Database with Custom Items
+function getMergedDatabase() {
+    const db = JSON.parse(JSON.stringify(WIKELO_DATABASE));
+    
+    if (appState.customCovenants && appState.customCovenants.length > 0) {
+        appState.customCovenants.forEach(cov => {
+            const cat = cov.category || 'Custom';
+            if (!db[cat]) {
+                db[cat] = [];
+            }
+            db[cat].push(cov);
+        });
+    }
+    
+    return db;
+}
+
+// Toggle checklist state of an item
+function toggleComplete(itemName) {
+    const idx = appState.completedItems.indexOf(itemName);
+    if (idx === -1) {
+        appState.completedItems.push(itemName);
+    } else {
+        appState.completedItems.splice(idx, 1);
+    }
+    saveState();
+    renderAll();
+}
+
+// Helper to check if an item can be crafted (tithe requirements satisfied)
+function canCraft(item) {
+    return item.requirements.every(req => {
+        const owned = appState.inventory[req.name] || 0;
+        return owned >= req.qty;
+    });
+}
+
+// Toggle view mode UI text/icon
+function updateViewToggleUI() {
+    const btn = document.getElementById('view-toggle-btn');
+    if (!btn) return;
+    if (appState.viewMode === 'list') {
+        btn.innerHTML = '<span class="view-mode-icon">🎴</span> Card View';
+    } else {
+        btn.innerHTML = '<span class="view-mode-icon">📋</span> List View';
+    }
+}
+
+// Filter and Render Catalog Cards/List items
 function renderCatalog() {
     const container = document.getElementById('catalog-container');
+    if (!container) return;
     container.innerHTML = '';
     
     const searchVal = document.getElementById('search-input').value.toLowerCase().trim();
-    const activeFilterBtn = document.querySelector('.filter-tag.active');
-    const filterType = activeFilterBtn ? activeFilterBtn.dataset.filter : 'all';
+    
+    // Get checked categories
+    const checkedCategories = Array.from(document.querySelectorAll('.category-filter-checkbox:checked')).map(cb => cb.value);
+    
+    // Get checked statuses
+    const filterReady = document.getElementById('filter-ready').checked;
+    const filterMissing = document.getElementById('filter-missing').checked;
+    const filterCompleted = document.getElementById('filter-completed').checked;
+    
+    if (checkedCategories.length === 0) {
+        container.innerHTML = '<div class="no-results" style="text-align: center; padding: 40px; color: var(--text-gray); font-style: italic;">Select at least one category to display offerings.</div>';
+        document.getElementById('global-completed').innerText = '0 / 0';
+        document.getElementById('global-percentage').innerText = '0%';
+        document.getElementById('global-progress-bar').style.width = '0%';
+        return;
+    }
     
     const booksConfig = {
         'Ships': { title: 'Vessels', sub: 'Vessel Covenant Registry', icon: '🚀' },
         'Gear': { title: 'Armor', sub: 'Armor of Ascension', icon: '🛡️' },
         'Weapons': { title: 'Weapons', sub: 'Weapons of the Chosen', icon: '🔫' },
-        'Misc': { title: 'Miscellany', sub: 'Sacred Miscellaneous Objects', icon: '⚙️' }
+        'Misc': { title: 'Miscellany', sub: 'Sacred Miscellaneous Objects', icon: '⚙️' },
+        'Custom': { title: 'Custom Offerings', sub: 'User Created Covenants', icon: '🛠️' }
     };
 
     let totalCompleted = 0;
     let totalItemsCount = 0;
 
-    for (const [category, items] of Object.entries(WIKELO_DATABASE)) {
+    const mergedDb = getMergedDatabase();
+
+    // First calculate global statistics from the entire database (including custom)
+    for (const [category, items] of Object.entries(mergedDb)) {
+        items.forEach(item => {
+            totalItemsCount++;
+            if (appState.completedItems.includes(item.name)) {
+                totalCompleted++;
+            }
+        });
+    }
+
+    const isListView = appState.viewMode === 'list';
+
+    // Now render sections
+    for (const [category, items] of Object.entries(mergedDb)) {
+        // Only process categories that are checked in filter
+        if (!checkedCategories.includes(category)) continue;
+        
         const config = booksConfig[category] || { title: `Book: ${category}`, sub: 'Exchange Offerings', icon: '📦' };
         
         const filteredItems = items.filter(item => {
@@ -1493,22 +1722,13 @@ function renderCatalog() {
             const isCompleted = appState.completedItems.includes(item.name);
             const isCraftable = canCraft(item);
             
-            if (filterType === 'all') return true;
-            if (filterType === 'Ships' || filterType === 'Gear' || filterType === 'Weapons' || filterType === 'Misc') {
-                return filterType === category;
-            }
-            if (filterType === 'craftable') return isCraftable && !isCompleted;
-            if (filterType === 'incomplete') return !isCraftable && !isCompleted;
-            if (filterType === 'completed') return isCompleted;
+            // Check status filters (OR logic)
+            let matchesStatus = false;
+            if (filterReady && isCraftable && !isCompleted) matchesStatus = true;
+            if (filterMissing && !isCraftable && !isCompleted) matchesStatus = true;
+            if (filterCompleted && isCompleted) matchesStatus = true;
             
-            return true;
-        });
-        
-        items.forEach(item => {
-            totalItemsCount++;
-            if (appState.completedItems.includes(item.name)) {
-                totalCompleted++;
-            }
+            return matchesStatus;
         });
         
         if (filteredItems.length === 0) continue;
@@ -1526,12 +1746,11 @@ function renderCatalog() {
         bookSection.appendChild(bookHeader);
         
         const grid = document.createElement('div');
-        grid.className = 'items-grid';
+        grid.className = isListView ? 'list-view-container' : 'items-grid';
         
         filteredItems.forEach(item => {
             const isCompleted = appState.completedItems.includes(item.name);
-            const card = document.createElement('div');
-            card.className = `covenant-card ${isCompleted ? 'completed' : ''}`;
+            const isCustom = item.isCustom || false;
             
             let metCount = 0;
             const reqsHtml = item.requirements.map(req => {
@@ -1553,48 +1772,105 @@ function renderCatalog() {
             const pct = Math.min(100, Math.round((metCount / item.requirements.length) * 100));
             const isCraftable = metCount === item.requirements.length;
             
-            let imageHtml = '';
-            if (item.image_url) {
-                const creditHtml = item.image_credit ? `<span class="image-credit">${item.image_credit}</span>` : '';
-                imageHtml = `
-                    <div class="card-image-wrapper">
-                        <img src="${item.image_url}" alt="${item.name}" class="card-image" loading="lazy">
-                        ${creditHtml}
+            if (isListView) {
+                // List View Row
+                const row = document.createElement('div');
+                row.className = `covenant-list-row ${isCompleted ? 'completed' : ''}`;
+                
+                let imageHtml = '';
+                if (item.image_url) {
+                    imageHtml = `<img src="${item.image_url}" alt="${item.name}" class="list-row-thumb">`;
+                } else {
+                    imageHtml = `<div class="list-row-thumb-placeholder">${config.icon}</div>`;
+                }
+                
+                const deleteBtnHtml = isCustom ? 
+                    `<button class="btn-delete-custom-cov" onclick="deleteCustomCovenant('${item.name.replace(/'/g, "\\'")}')" title="Delete custom covenant">🗑️</button>` : '';
+                
+                row.innerHTML = `
+                    <div class="covenant-list-left">
+                        ${imageHtml}
+                        <div class="covenant-list-info">
+                            <h4 class="covenant-list-title">${item.name}</h4>
+                            <span class="covenant-list-mission">Contract: ${item.mission}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="covenant-list-middle">
+                        <div class="covenant-list-reqs-preview" title="${item.requirements.map(r => `${r.name}: ${appState.inventory[r.name] || 0}/${r.qty}`).join(', ')}">
+                            Requirements: ${item.requirements.map(r => r.name).join(', ')}
+                        </div>
+                        <div class="covenant-list-progress-section">
+                            <div class="covenant-list-progress-track">
+                                <div class="covenant-list-progress-bar" style="width: ${pct}%;"></div>
+                            </div>
+                            <span class="covenant-list-pct-text">${pct}%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="covenant-list-right">
+                        <div class="fulfilled-toggle">
+                            <label class="custom-checkbox">
+                                <span class="checkbox-ring"></span>
+                                <input type="checkbox" style="display:none" ${isCompleted ? 'checked' : ''} onchange="toggleComplete('${item.name.replace(/'/g, "\\'")}')">
+                                Fulfill Covenant
+                            </label>
+                        </div>
+                        ${deleteBtnHtml}
                     </div>
                 `;
+                grid.appendChild(row);
+            } else {
+                // Card View Card
+                const card = document.createElement('div');
+                card.className = `covenant-card ${isCompleted ? 'completed' : ''}`;
+                
+                let imageHtml = '';
+                if (item.image_url) {
+                    const creditHtml = item.image_credit ? `<span class="image-credit">${item.image_credit}</span>` : '';
+                    imageHtml = `
+                        <div class="card-image-wrapper">
+                            <img src="${item.image_url}" alt="${item.name}" class="card-image" loading="lazy">
+                            ${creditHtml}
+                        </div>
+                    `;
+                }
+                
+                const deleteBtnHtml = isCustom ? 
+                    `<button class="btn-delete-custom-cov-card" onclick="deleteCustomCovenant('${item.name.replace(/'/g, "\\'")}')" title="Delete custom covenant">✕</button>` : '';
+                
+                card.innerHTML = `
+                    ${imageHtml}
+                    ${deleteBtnHtml}
+                    <div class="card-header-row">
+                        <h3 class="card-title">${item.name}</h3>
+                    </div>
+                    <span class="mission-label">Contract: <strong>${item.mission}</strong></span>
+                    
+                    <div class="card-progress-wrapper">
+                        <div class="card-progress-info">
+                            <span>Tithe Progress</span>
+                            <span>${pct}%</span>
+                        </div>
+                        <div class="card-progress-track">
+                            <div class="card-progress-bar" style="width: ${pct}%;"></div>
+                        </div>
+                    </div>
+                    
+                    <ul class="reqs-list">
+                        ${reqsHtml}
+                    </ul>
+                    
+                    <div class="fulfilled-toggle">
+                        <label class="custom-checkbox">
+                            <span class="checkbox-ring"></span>
+                            <input type="checkbox" style="display:none" ${isCompleted ? 'checked' : ''} onchange="toggleComplete('${item.name.replace(/'/g, "\\'")}')">
+                            Fulfill Covenant
+                        </label>
+                    </div>
+                `;
+                grid.appendChild(card);
             }
-            
-            card.innerHTML = `
-                ${imageHtml}
-                <div class="card-header-row">
-                    <h3 class="card-title">${item.name}</h3>
-                </div>
-                <span class="mission-label">Contract: <strong>${item.mission}</strong></span>
-                
-                <div class="card-progress-wrapper">
-                    <div class="card-progress-info">
-                        <span>Tithe Progress</span>
-                        <span>${pct}%</span>
-                    </div>
-                    <div class="card-progress-track">
-                        <div class="card-progress-bar" style="width: ${pct}%;"></div>
-                    </div>
-                </div>
-                
-                <ul class="reqs-list">
-                    ${reqsHtml}
-                </ul>
-                
-                <div class="fulfilled-toggle">
-                    <label class="custom-checkbox">
-                        <span class="checkbox-ring"></span>
-                        <input type="checkbox" style="display:none" ${isCompleted ? 'checked' : ''} onchange="toggleComplete('${item.name.replace(/'/g, "\'")}')">
-                        Fulfill Covenant
-                    </label>
-                </div>
-            `;
-            
-            grid.appendChild(card);
         });
         
         bookSection.appendChild(grid);
@@ -1607,54 +1883,559 @@ function renderCatalog() {
     document.getElementById('global-progress-bar').style.width = `${globalPct}%`;
 }
 
-// Helper to check if an item is ready for exchange
-function canCraft(item) {
-    return item.requirements.every(req => {
-        const owned = appState.inventory[req.name] || 0;
-        return owned >= req.qty;
-    });
-}
-
-// Toggle checklist state of an item
-function toggleComplete(itemName) {
-    const idx = appState.completedItems.indexOf(itemName);
-    if (idx === -1) {
-        appState.completedItems.push(itemName);
-    } else {
-        appState.completedItems.splice(idx, 1);
-    }
-    saveState();
-    renderAll();
-}
-
-// Filter inventory inputs based on search input and accordion toggle
-function filterInventory() {
-    const searchVal = document.getElementById('inventory-search').value.toLowerCase().trim();
-    const items = document.querySelectorAll('.input-wrapper');
+// Dynamically Render the Inventory Sidebar
+function renderInventorySidebar() {
+    const container = document.getElementById('inventory-accordions-container');
+    if (!container) return;
     
-    items.forEach(item => {
-        const name = item.dataset.itemName.toLowerCase();
-        if (name.includes(searchVal)) {
-            item.classList.remove('filtered-out');
-        } else {
-            item.classList.add('filtered-out');
+    const activeCategories = [];
+    document.querySelectorAll('.accordion-item.active').forEach(el => {
+        activeCategories.push(el.dataset.category);
+    });
+    
+    container.innerHTML = '';
+    
+    const categories = JSON.parse(JSON.stringify(BASE_CATEGORIES));
+    
+    if (appState.customMaterials && appState.customMaterials.length > 0) {
+        categories['custom_mats'] = {
+            title: 'Custom Materials',
+            items: appState.customMaterials
+        };
+    }
+    
+    const searchVal = document.getElementById('inventory-search') ? document.getElementById('inventory-search').value.toLowerCase().trim() : '';
+    
+    for (const [catId, catData] of Object.entries(categories)) {
+        const filteredItems = catData.items.filter(item => item.toLowerCase().includes(searchVal));
+        
+        if (searchVal.length > 0 && filteredItems.length === 0) {
+            continue;
+        }
+        
+        const accordionItem = document.createElement('div');
+        accordionItem.className = 'accordion-item';
+        accordionItem.dataset.category = catId;
+        
+        if (activeCategories.includes(catId) || searchVal.length > 0) {
+            accordionItem.classList.add('active');
+        }
+        
+        const triggerBtn = document.createElement('button');
+        triggerBtn.className = 'accordion-trigger';
+        triggerBtn.innerHTML = `
+            <span>${catData.title}</span>
+            <span class="chevron">▼</span>
+        `;
+        triggerBtn.addEventListener('click', (e) => {
+            accordionItem.classList.toggle('active');
+        });
+        
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'accordion-content';
+        
+        const gridDiv = document.createElement('div');
+        gridDiv.className = 'input-grid';
+        
+        filteredItems.forEach(item => {
+            const owned = appState.inventory[item] || 0;
+            
+            const wrapper = document.createElement('div');
+            wrapper.className = 'input-wrapper';
+            wrapper.dataset.itemName = item;
+            
+            const isMgScrip = item === 'MG Scrip';
+            const convertBtnHtml = isMgScrip ? `<button class="convert-currency-btn" onclick="convertMgToFav(event)" title="Convert 50 MG Scrip to 1 Wikelo Favor">⚡ Convert (50:1)</button>` : '';
+            
+            wrapper.innerHTML = `
+                <label class="input-label" title="${item}">${item}</label>
+                <div class="input-control-group">
+                    <div class="input-control">
+                        <button class="qty-btn minus" onclick="adjustQty('${item.replace(/'/g, "\\'")}', -1)">-</button>
+                        <input type="number" min="0" class="qty-input" data-item="${item}" value="${owned}" onchange="onQtyChange(this)">
+                        <button class="qty-btn plus" onclick="adjustQty('${item.replace(/'/g, "\\'")}', 1)">+</button>
+                    </div>
+                    ${convertBtnHtml}
+                </div>
+            `;
+            gridDiv.appendChild(wrapper);
+        });
+        
+        contentDiv.appendChild(gridDiv);
+        accordionItem.appendChild(triggerBtn);
+        accordionItem.appendChild(contentDiv);
+        container.appendChild(accordionItem);
+    }
+}
+
+// Filter inventory inputs based on search input
+function filterInventory() {
+    renderInventorySidebar();
+}
+
+// Visual Toast System
+function showToast(message, type = 'success') {
+    let container = document.getElementById('toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        container.style.position = 'fixed';
+        container.style.bottom = '20px';
+        container.style.left = '50%';
+        container.style.transform = 'translateX(-50%)';
+        container.style.zIndex = '9999';
+        container.style.display = 'flex';
+        container.style.flexDirection = 'column';
+        container.style.gap = '10px';
+        container.style.pointerEvents = 'none';
+        document.body.appendChild(container);
+    }
+    
+    const toast = document.createElement('div');
+    toast.className = `toast-message ${type}`;
+    toast.style.background = 'rgba(9, 25, 36, 0.95)';
+    toast.style.border = '1px solid var(--accent-bronze)';
+    toast.style.color = 'var(--text-white)';
+    toast.style.padding = '12px 24px';
+    toast.style.borderRadius = '30px';
+    toast.style.fontSize = '14px';
+    toast.style.fontWeight = '500';
+    toast.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(20px)';
+    toast.style.transition = 'all 0.3s ease';
+    toast.style.pointerEvents = 'auto';
+    toast.style.display = 'flex';
+    toast.style.alignItems = 'center';
+    toast.style.gap = '8px';
+    
+    if (type === 'success') {
+        toast.style.borderColor = 'var(--accent-mint)';
+        toast.innerHTML = `🟢 ${message}`;
+    } else if (type === 'warning') {
+        toast.style.borderColor = 'var(--state-warning)';
+        toast.innerHTML = `⚠️ ${message}`;
+    } else {
+        toast.innerHTML = `ℹ️ ${message}`;
+    }
+    
+    container.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateY(0)';
+    }, 50);
+    
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(-20px)';
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 3000);
+}
+
+// Handle Custom Items Creator Forms
+function onCreateMaterial(event) {
+    event.preventDefault();
+    const nameInput = document.getElementById('new-material-name');
+    const name = nameInput.value.trim();
+    if (!name) return;
+    
+    const mergedDb = getMergedDatabase();
+    let exists = false;
+    for (const items of Object.values(mergedDb)) {
+        if (items.some(item => item.requirements.some(r => r.name.toLowerCase() === name.toLowerCase()))) {
+            exists = true;
+            break;
+        }
+    }
+    if (appState.customMaterials.some(m => m.toLowerCase() === name.toLowerCase())) {
+        exists = true;
+    }
+    
+    if (exists) {
+        showToast("Material already exists!", "warning");
+        return;
+    }
+    
+    appState.customMaterials.push(name);
+    saveState();
+    
+    nameInput.value = '';
+    showToast(`Custom Material "${name}" created!`);
+    
+    renderInventorySidebar();
+    renderRequirementsCreatorList();
+    renderManageLists();
+}
+
+function onCreateCovenant(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('new-covenant-name').value.trim();
+    const category = document.getElementById('new-covenant-category').value;
+    const mission = document.getElementById('new-covenant-mission').value.trim();
+    
+    if (!name || !mission) {
+        showToast("Please fill in name and contract description!", "warning");
+        return;
+    }
+    
+    const reqs = [];
+    const rows = document.querySelectorAll('.req-creator-row');
+    rows.forEach(row => {
+        const cb = row.querySelector('.req-creator-cb');
+        const qtyInput = row.querySelector('.req-creator-input');
+        if (cb && cb.checked) {
+            const matName = cb.dataset.material;
+            const qty = parseInt(qtyInput.value) || 1;
+            reqs.push({ name: matName, qty: qty });
         }
     });
     
-    if (searchVal.length > 0) {
-        const accordions = document.querySelectorAll('.accordion-item');
-        accordions.forEach(acc => {
-            const visibleItems = acc.querySelectorAll('.input-wrapper:not(.filtered-out)');
-            if (visibleItems.length > 0) {
-                acc.classList.add('active');
-            } else {
-                acc.classList.remove('active');
-            }
-        });
+    if (reqs.length === 0) {
+        showToast("Please select at least one material requirement!", "warning");
+        return;
+    }
+    
+    const fileInput = document.getElementById('new-covenant-image');
+    const createCov = (imgDataUrl = '') => {
+        const newCov = {
+            name: name,
+            category: category,
+            mission: mission,
+            requirements: reqs,
+            image_url: imgDataUrl,
+            image_credit: imgDataUrl ? 'Custom Image' : '',
+            isCustom: true
+        };
+        
+        appState.customCovenants.push(newCov);
+        saveState();
+        
+        document.getElementById('create-covenant-form').reset();
+        const preview = document.getElementById('new-covenant-image-preview');
+        if (preview) {
+            preview.style.display = 'none';
+            preview.innerHTML = '';
+        }
+        
+        document.querySelectorAll('.req-creator-cb').forEach(cb => cb.checked = false);
+        document.querySelectorAll('.req-creator-input').forEach(input => input.value = 1);
+        
+        showToast(`Custom Covenant "${name}" created successfully!`);
+        
+        renderAll();
+        renderManageLists();
+    };
+    
+    if (fileInput && fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            createCov(e.target.result);
+        };
+        reader.onerror = function() {
+            showToast("Error reading image file", "warning");
+            createCov('');
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+    } else {
+        createCov('');
     }
 }
 
-// Render all UI components
+function initCreatorImagePreview() {
+    const fileInput = document.getElementById('new-covenant-image');
+    const preview = document.getElementById('new-covenant-image-preview');
+    if (!fileInput || !preview) return;
+    
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        } else {
+            preview.style.display = 'none';
+            preview.innerHTML = '';
+        }
+    });
+}
+
+function renderRequirementsCreatorList() {
+    const listDiv = document.getElementById('requirements-creator-list');
+    if (!listDiv) return;
+    
+    listDiv.innerHTML = '';
+    
+    const allMats = new Set();
+    for (const catData of Object.values(BASE_CATEGORIES)) {
+        catData.items.forEach(item => allMats.add(item));
+    }
+    if (appState.customMaterials) {
+        appState.customMaterials.forEach(m => allMats.add(m));
+    }
+    
+    const sortedMats = Array.from(allMats).sort();
+    
+    sortedMats.forEach(mat => {
+        const row = document.createElement('div');
+        row.className = 'req-creator-row';
+        
+        row.innerHTML = `
+            <label class="req-creator-label" title="${mat}">
+                <input type="checkbox" class="req-creator-cb" data-material="${mat}">
+                <span>${mat}</span>
+            </label>
+            <input type="number" min="1" value="1" class="req-creator-input" data-material="${mat}">
+        `;
+        listDiv.appendChild(row);
+    });
+}
+
+function renderManageLists() {
+    const covList = document.getElementById('custom-covenants-manage-list');
+    const matList = document.getElementById('custom-materials-manage-list');
+    
+    if (covList) {
+        covList.innerHTML = '';
+        if (appState.customCovenants.length === 0) {
+            covList.innerHTML = '<li class="custom-manage-row" style="opacity:0.5; font-style:italic;">No custom covenants yet</li>';
+        } else {
+            appState.customCovenants.forEach(cov => {
+                const li = document.createElement('li');
+                li.className = 'custom-manage-row';
+                li.innerHTML = `
+                    <span>${cov.name} (${cov.category})</span>
+                    <button class="btn-delete-custom" onclick="deleteCustomCovenant('${cov.name.replace(/'/g, "\\'")}')">Delete</button>
+                `;
+                covList.appendChild(li);
+            });
+        }
+    }
+    
+    if (matList) {
+        matList.innerHTML = '';
+        if (appState.customMaterials.length === 0) {
+            matList.innerHTML = '<li class="custom-manage-row" style="opacity:0.5; font-style:italic;">No custom materials yet</li>';
+        } else {
+            appState.customMaterials.forEach(mat => {
+                const li = document.createElement('li');
+                li.className = 'custom-manage-row';
+                li.innerHTML = `
+                    <span>${mat}</span>
+                    <button class="btn-delete-custom" onclick="deleteCustomMaterial('${mat.replace(/'/g, "\\'")}')">Delete</button>
+                `;
+                matList.appendChild(li);
+            });
+        }
+    }
+}
+
+function deleteCustomCovenant(name) {
+    if (confirm(`Are you sure you want to delete the custom covenant "${name}"?`)) {
+        appState.customCovenants = appState.customCovenants.filter(cov => cov.name !== name);
+        appState.completedItems = appState.completedItems.filter(item => item !== name);
+        saveState();
+        showToast(`Deleted custom covenant "${name}"`, "success");
+        renderAll();
+        renderManageLists();
+    }
+}
+
+function deleteCustomMaterial(name) {
+    if (confirm(`Are you sure you want to delete the custom material "${name}"? Any custom covenants requiring it will still reference it, but it will be removed from your custom material list.`)) {
+        appState.customMaterials = appState.customMaterials.filter(m => m !== name);
+        if (appState.inventory[name] !== undefined) {
+            delete appState.inventory[name];
+        }
+        saveState();
+        showToast(`Deleted custom material "${name}"`, "success");
+        renderInventorySidebar();
+        renderRequirementsCreatorList();
+        renderManageLists();
+    }
+}
+
+function bindCreatorModalEvents() {
+    const creatorBtn = document.getElementById('creator-btn');
+    const creatorModal = document.getElementById('creator-modal');
+    const closeCreatorModal = document.getElementById('close-creator-modal');
+    
+    if (creatorBtn && creatorModal && closeCreatorModal) {
+        creatorBtn.addEventListener('click', () => {
+            renderRequirementsCreatorList();
+            renderManageLists();
+            creatorModal.classList.add('open');
+        });
+        
+        closeCreatorModal.addEventListener('click', () => {
+            creatorModal.classList.remove('open');
+        });
+        
+        creatorModal.addEventListener('click', (e) => {
+            if (e.target === creatorModal) creatorModal.classList.remove('open');
+        });
+    }
+    
+    const tabs = document.querySelectorAll('.creator-tab');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            tabs.forEach(t => t.classList.remove('active'));
+            e.target.classList.add('active');
+            
+            const tabId = e.target.dataset.tab;
+            const contents = document.querySelectorAll('.creator-tab-content');
+            contents.forEach(c => {
+                if (c.id === tabId) {
+                    c.classList.add('active');
+                } else {
+                    c.classList.remove('active');
+                }
+            });
+        });
+    });
+}
+
+// OCR Scanning with Tesseract.js
+function initOCR() {
+    const dropzone = document.getElementById('ocr-dropzone');
+    const fileInput = document.getElementById('ocr-file-input');
+    const statusDiv = document.getElementById('ocr-status');
+    const statusText = document.getElementById('ocr-status-text');
+    
+    if (!dropzone || !fileInput) return;
+    
+    dropzone.addEventListener('click', () => {
+        fileInput.click();
+    });
+    
+    fileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+            processOCRImage(e.target.files[0]);
+        }
+    });
+    
+    dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.style.borderColor = 'var(--accent-mint)';
+        dropzone.style.background = 'rgba(107, 197, 193, 0.08)';
+    });
+    
+    dropzone.addEventListener('dragleave', () => {
+        dropzone.style.borderColor = 'var(--border-gold)';
+        dropzone.style.background = 'rgba(14, 25, 36, 0.2)';
+    });
+    
+    dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.style.borderColor = 'var(--border-gold)';
+        dropzone.style.background = 'rgba(14, 25, 36, 0.2)';
+        
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+            processOCRImage(e.dataTransfer.files[0]);
+        }
+    });
+}
+
+function processOCRImage(file) {
+    const statusDiv = document.getElementById('ocr-status');
+    const statusText = document.getElementById('ocr-status-text');
+    
+    if (!statusDiv || !statusText) return;
+    
+    statusDiv.style.display = 'flex';
+    statusText.innerText = 'Initializing OCR Engine...';
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const imgDataUrl = e.target.result;
+        
+        Tesseract.recognize(
+            imgDataUrl,
+            'eng',
+            { 
+                logger: m => {
+                    if (m.status === 'recognizing') {
+                        const pct = Math.round(m.progress * 100);
+                        statusText.innerText = `Scanning: ${pct}%`;
+                    }
+                } 
+            }
+        ).then(({ data: { text } }) => {
+            statusDiv.style.display = 'none';
+            parseOCRText(text);
+        }).catch(err => {
+            console.error(err);
+            statusDiv.style.display = 'none';
+            showToast("OCR scanning failed. Make sure the image is clear.", "warning");
+        });
+    };
+    reader.readAsDataURL(file);
+}
+
+function parseOCRText(text) {
+    console.log("Raw OCR Text:", text);
+    
+    const allMats = new Set();
+    for (const catData of Object.values(BASE_CATEGORIES)) {
+        catData.items.forEach(item => allMats.add(item));
+    }
+    if (appState.customMaterials) {
+        appState.customMaterials.forEach(m => allMats.add(m));
+    }
+    
+    const lines = text.split('\n');
+    const detected = {};
+    
+    lines.forEach(line => {
+        const cleanLine = line.toLowerCase().replace(/[^a-z0-9\s\-\(\)]/g, ' ');
+        
+        for (const mat of allMats) {
+            const matLower = mat.toLowerCase();
+            if (cleanLine.includes(matLower)) {
+                const numbers = line.match(/\b\d+\b/g);
+                let qty = 1;
+                
+                if (numbers) {
+                    const nameDigits = matLower.match(/\d+/g) || [];
+                    const actualNumbers = numbers.filter(num => !nameDigits.includes(num));
+                    
+                    if (actualNumbers.length > 0) {
+                        const possibleQty = actualNumbers.find(num => parseInt(num) < 10000);
+                        if (possibleQty) {
+                            qty = parseInt(possibleQty);
+                        }
+                    }
+                }
+                
+                detected[mat] = Math.max(detected[mat] || 0, qty);
+            }
+        }
+    });
+    
+    const detectedKeys = Object.keys(detected);
+    if (detectedKeys.length === 0) {
+        showToast("No matching inventory materials detected in the screenshot.", "warning");
+        return;
+    }
+    
+    detectedKeys.forEach(mat => {
+        appState.inventory[mat] = detected[mat];
+    });
+    
+    saveState();
+    renderInventorySidebar();
+    renderAll();
+    
+    const summary = detectedKeys.map(mat => `${mat} (${detected[mat]})`).join(', ');
+    showToast(`Detected: ${summary}`, "success");
+}
+
+// Filter and Render Catalog Cards
 function renderAll() {
     renderCatalog();
 }
@@ -1663,30 +2444,30 @@ function renderAll() {
 function bindEvents() {
     document.getElementById('search-input').addEventListener('input', renderAll);
     
-    const tags = document.querySelectorAll('.filter-tag');
-    tags.forEach(tag => {
-        tag.addEventListener('click', (e) => {
-            tags.forEach(t => t.classList.remove('active'));
-            e.target.classList.add('active');
-            renderAll();
-        });
+    document.getElementById('view-toggle-btn').addEventListener('click', () => {
+        appState.viewMode = appState.viewMode === 'card' ? 'list' : 'card';
+        saveState();
+        updateViewToggleUI();
+        renderAll();
+    });
+    
+    const categoryCheckboxes = document.querySelectorAll('.category-filter-checkbox');
+    categoryCheckboxes.forEach(cb => {
+        cb.addEventListener('change', renderAll);
+    });
+    
+    const statusCheckboxes = document.querySelectorAll('.status-filter-checkbox');
+    statusCheckboxes.forEach(cb => {
+        cb.addEventListener('change', renderAll);
     });
     
     document.getElementById('inventory-search').addEventListener('input', filterInventory);
-    
-    const triggers = document.querySelectorAll('.accordion-trigger');
-    triggers.forEach(trigger => {
-        trigger.addEventListener('click', (e) => {
-            const item = e.target.closest('.accordion-item');
-            item.classList.toggle('active');
-        });
-    });
     
     document.getElementById('reset-btn').addEventListener('click', () => {
         if (confirm('Are you sure you want to reset all inventory quantities to 0? (Your completed covenants will be preserved)')) {
             appState.inventory = {};
             saveState();
-            initInventoryInputs();
+            renderInventorySidebar();
             renderAll();
         }
     });
@@ -1753,15 +2534,15 @@ function bindEvents() {
                 if (decoded && (decoded.inventory || decoded.completedItems)) {
                     appState = decoded;
                     saveState();
-                    initInventoryInputs();
+                    renderInventorySidebar();
                     renderAll();
                     modal.classList.remove('open');
-                    alert("Data restored successfully!");
+                    showToast("Data restored successfully!", "success");
                 } else {
-                    alert("Invalid backup code format");
+                    showToast("Invalid backup code format", "warning");
                 }
             } catch (e) {
-                alert("Error decoding data: " + e.message);
+                showToast("Error decoding data: " + e.message, "warning");
             }
         });
     }
