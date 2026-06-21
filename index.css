@@ -1760,6 +1760,249 @@ body {
     opacity: 1;
 }
 
+/* Glowing Exchange Button */
+.btn-exchange {
+    width: 100%;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, var(--accent-mint), #4facfe);
+    border: none;
+    border-radius: 20px;
+    color: #06111a;
+    font-family: var(--body-font);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(107, 197, 193, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn-exchange:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(107, 197, 193, 0.6), 0 0 15px rgba(107, 197, 193, 0.4);
+    background: linear-gradient(135deg, #83e0dc, #00f2fe);
+}
+
+.btn-exchange:active {
+    transform: translateY(0);
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.status-badge.in-progress {
+    background: rgba(142, 161, 176, 0.1);
+    color: var(--text-gray);
+    border: 1px solid rgba(142, 161, 176, 0.2);
+}
+
+.exchanged-count-badge {
+    background: rgba(190, 151, 107, 0.15);
+    border: 1px solid var(--accent-bronze);
+    color: var(--text-gold);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+/* Interactive List View Row (Dropdown Details) */
+.covenant-list-row {
+    cursor: pointer;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding: 0 !important;
+}
+
+.covenant-list-row-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 20px;
+    width: 100%;
+}
+
+.covenant-list-row-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 20px;
+    border-top: 1px dashed transparent;
+}
+
+.covenant-list-row.expanded .covenant-list-row-details {
+    max-height: 600px;
+    opacity: 1;
+    padding: 16px 20px;
+    border-top-color: var(--border-gold);
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.chevron-icon {
+    font-size: 11px;
+    color: var(--text-gray);
+    transition: transform 0.3s ease;
+    user-select: none;
+}
+
+.covenant-list-row.expanded .chevron-icon {
+    transform: rotate(180deg);
+    color: var(--accent-mint);
+}
+
+.list-row-details-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.list-row-reqs-col h5 {
+    font-size: 11px;
+    color: var(--text-gold);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.list-row-actions-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+/* Hangar Modal Specifics */
+.hangar-modal-content {
+    max-width: 600px !important;
+}
+
+.hangar-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.hangar-stat-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-gold);
+    border-radius: 6px;
+    padding: 12px 8px;
+    text-align: center;
+}
+
+[data-theme="light"] .hangar-stat-box {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.hangar-stat-count {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--accent-mint);
+}
+
+.hangar-stat-lbl {
+    font-size: 9px;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.hangar-list {
+    max-height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 5px;
+    margin-top: 15px;
+}
+
+.hangar-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+[data-theme="light"] .hangar-row {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.03);
+}
+
+.hangar-row:hover {
+    border-color: var(--border-gold-hover);
+    background: rgba(190, 151, 107, 0.05);
+}
+
+.hangar-item-name {
+    font-weight: 500;
+    color: var(--text-white);
+}
+
+.hangar-item-cat {
+    font-size: 10px;
+    color: var(--text-gold);
+    margin-left: 8px;
+    opacity: 0.8;
+}
+
+.hangar-item-date {
+    font-size: 11px;
+    color: var(--text-gray);
+}
+
+.btn-remove-hangar {
+    background: none;
+    border: none;
+    color: var(--state-warning);
+    cursor: pointer;
+    font-size: 13px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    padding: 4px 8px;
+    outline: none;
+}
+
+.btn-remove-hangar:hover {
+    opacity: 1;
+}
+
+.no-hangar-items {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-gray);
+    font-style: italic;
+    font-size: 13px;
+}
+
 /* Responsive Rules */
 @media (max-width: 1200px) {
     .bible-layout {
@@ -1886,5 +2129,26 @@ body {
 
     .requirements-creator-list {
         grid-template-columns: 1fr;
+    }
+
+    /* Mobile Hangar & List expansion */
+    .hangar-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .list-row-details-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .list-row-actions-col {
+        align-items: stretch;
+        width: 100%;
+    }
+    
+    .covenant-list-row-main {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
     }
 }

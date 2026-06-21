@@ -1,1494 +1,14 @@
 // Database compiled dynamically
-const WIKELO_DATABASE = {
-  "Ships": [
-    {
-      "name": "A2 Hercules",
-      "mission": "Starlifter A2 War Mod",
-      "requirements": [
-        {
-          "qty": 50,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 20,
-          "name": "Polaris Bit"
-        },
-        {
-          "qty": 20,
-          "name": "MG Scrip"
-        },
-        {
-          "qty": 6,
-          "name": "ASD Secure Drive"
-        },
-        {
-          "qty": 6,
-          "name": "Irradiated Valakkar Pearl (Grade AAA)"
-        },
-        {
-          "qty": 6,
-          "name": "Tevarin War Service Marker (Pristine)"
-        },
-        {
-          "qty": 6,
-          "name": "DCHS-05 Comp-Board"
-        },
-        {
-          "qty": 6,
-          "name": "Carinite (Pure)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image48.png",
-      "image_credit": "📷 Au999"
-    },
-    {
-      "name": "Ares Inferno",
-      "mission": "Starfighter Inferno Special",
-      "requirements": [
-        {
-          "qty": 10,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 5,
-          "name": "Yormandi Tongue"
-        },
-        {
-          "qty": 5,
-          "name": "Ace Interceptor Helmet"
-        },
-        {
-          "qty": 1,
-          "name": "UEE 6th Platoon Medal (Pristine)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image66.png",
-      "image_credit": "📷 Kaarzah"
-    },
-    {
-      "name": "Ares Ion",
-      "mission": "Sneaky Starfighter Ion",
-      "requirements": [
-        {
-          "qty": 10,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 10,
-          "name": "Yormandi Eye"
-        },
-        {
-          "qty": 5,
-          "name": "Ace Interceptor Helmet"
-        },
-        {
-          "qty": 1,
-          "name": "Tevarin War Service Marker (Pristine)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image32.png",
-      "image_credit": "📷 Kaarzah"
-    },
-    {
-      "name": "Asgard",
-      "mission": "Unnamed Contract",
-      "requirements": [
-        {
-          "qty": 50,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 5,
-          "name": "RCMBNT-PWL-1"
-        },
-        {
-          "qty": 5,
-          "name": "RCMBNT-PWL-2"
-        },
-        {
-          "qty": 5,
-          "name": "RCMBNT-PWL-3"
-        },
-        {
-          "qty": 5,
-          "name": "RCMBNT-RGL-1"
-        },
-        {
-          "qty": 5,
-          "name": "RCMBNT-RGL-2"
-        },
-        {
-          "qty": 5,
-          "name": "RCMBNT-RGL-3"
-        },
-        {
-          "qty": 5,
-          "name": "RCMBNT-XTL-1"
-        },
-        {
-          "qty": 5,
-          "name": "RCMBNT-XTL-2"
-        },
-        {
-          "qty": 5,
-          "name": "RCMBNT-XTL-3"
-        },
-        {
-          "qty": 3,
-          "name": "ASD Secure Drive"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image50.png",
-      "image_credit": "📷 LazyBrokOli"
-    },
-    {
-      "name": "C1 Spirit",
-      "mission": "Spirit Cargo mod",
-      "requirements": [
-        {
-          "qty": 8,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 1,
-          "name": "Tevarin War Service Marker (Pristine)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image2.png",
-      "image_credit": "📷 Me"
-    },
-    {
-      "name": "Constellation Taurus",
-      "mission": "Want Tanrus ship",
-      "requirements": [
-        {
-          "qty": 30,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 3,
-          "name": "Carinite (Pure)"
-        },
-        {
-          "qty": 3,
-          "name": "Irradiated Valakkar Pearl (Grade AAA)"
-        },
-        {
-          "qty": 3,
-          "name": "Government Cartography Agency Medal (Pristine)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image34.png",
-      "image_credit": "📷 DeDukeYT"
-    },
-    {
-      "name": "F8C Lightning Military",
-      "mission": "F8 War Special",
-      "requirements": [
-        {
-          "qty": 40,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 4,
-          "name": "Carinite (Pure)"
-        },
-        {
-          "qty": 4,
-          "name": "Irradiated Valakkar Pearl (Grade AAA)"
-        },
-        {
-          "qty": 4,
-          "name": "Tevarin War Service Marker (Pristine)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image39.png",
-      "image_credit": "📷 Fr0zeN1"
-    },
-    {
-      "name": "F8C Lightning Stealth",
-      "mission": "Sneaky Stabber",
-      "requirements": [
-        {
-          "qty": 40,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 15,
-          "name": "DCHS-05 Comp-Board"
-        },
-        {
-          "qty": 3,
-          "name": "Carinite (Pure)"
-        },
-        {
-          "qty": 3,
-          "name": "Irradiated Valakkar Pearl (Grade AAA)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image65.png",
-      "image_credit": "📷 DeDukeYT"
-    },
-    {
-      "name": "Fortune",
-      "mission": "Fortune ship for you",
-      "requirements": [
-        {
-          "qty": 3,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 1,
-          "name": "Carinite (Pure)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image24.png",
-      "image_credit": "📷 lLenartowy"
-    },
-    {
-      "name": "Golem",
-      "mission": "Golem Rocks",
-      "requirements": [
-        {
-          "qty": 2,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 15,
-          "name": "ASD Secure Drive"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image60.png",
-      "image_credit": "📷 Kaarzah"
-    },
-    {
-      "name": "Guardian",
-      "mission": "Guardian Fight Mod",
-      "requirements": [
-        {
-          "qty": 20,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 15,
-          "name": "Irradiated Valakkar Pearl (Grade AA)"
-        },
-        {
-          "qty": 10,
-          "name": "Ace Interceptor Helmet"
-        },
-        {
-          "qty": 1,
-          "name": "Tevarin War Service Marker (Pristine)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image47.png",
-      "image_credit": "📷 Hughezy"
-    },
-    {
-      "name": "Guardian QI",
-      "mission": "Guardian take down ship",
-      "requirements": [
-        {
-          "qty": 25,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 15,
-          "name": "DCHS-05 Comp-Board"
-        },
-        {
-          "qty": 15,
-          "name": "Irradiated Valakkar Pearl (Grade AA)"
-        },
-        {
-          "qty": 2,
-          "name": "UEE 6th Platoon Medal (Pristine)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image42.png",
-      "image_credit": "📷 Kaarzah"
-    },
-    {
-      "name": "Intrepid",
-      "mission": "Upgrade Intrepid",
-      "requirements": [
-        {
-          "qty": 3,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 1,
-          "name": "Government Cartography Agency Medal (Pristine)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image36.png",
-      "image_credit": "📷 Me, Dssfox"
-    },
-    {
-      "name": "L-21 Wolf Military + Gear",
-      "mission": "Unnamed Contract",
-      "requirements": [
-        {
-          "qty": 5,
-          "name": "Wikelo Favor"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image30.png",
-      "image_credit": "📷 LazyBrokOli"
-    },
-    {
-      "name": "L-21 Wolf Stealth",
-      "mission": "Unnamed Contract",
-      "requirements": [
-        {
-          "qty": 10,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 10,
-          "name": "Vanduul Plating"
-        },
-        {
-          "qty": 10,
-          "name": "Vanduul Metal"
-        },
-        {
-          "qty": 1,
-          "name": "Large Artifact Fragment (Pristine)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image49.png",
-      "image_credit": "📷 Slim_Syaddy"
-    },
-    {
-      "name": "Mirai Guardian MX",
-      "mission": "Mirai Guardian MX Wikelo War Special",
-      "requirements": [
-        {
-          "qty": 25,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 2,
-          "name": "Large Artifact Fragment (Pristine)"
-        },
-        {
-          "qty": 30,
-          "name": "Vanduul Plating"
-        },
-        {
-          "qty": 30,
-          "name": "Vanduul Metal"
-        },
-        {
-          "qty": 15,
-          "name": "Ace Interceptor Helmet"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image33.png",
-      "image_credit": "📷 BEEZZZ69"
-    },
-    {
-      "name": "Nox",
-      "mission": "Noxy Mod",
-      "requirements": [
-        {
-          "qty": 4,
-          "name": "Wikelo Favor"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image27.png",
-      "image_credit": "📷 WrathUnfaded"
-    },
-    {
-      "name": "Prospector",
-      "mission": "Unnamed Contract",
-      "requirements": [
-        {
-          "qty": 6,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 20,
-          "name": "Carinite"
-        },
-        {
-          "qty": 30,
-          "name": "Saldynium"
-        },
-        {
-          "qty": 40,
-          "name": "Jaclium"
-        },
-        {
-          "qty": 1,
-          "name": "Carinite (Pure)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image63.png",
-      "image_credit": "📷 BEEZZZ69"
-    },
-    {
-      "name": "Prowler Utility",
-      "mission": "Prowler More Utility",
-      "requirements": [
-        {
-          "qty": 40,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 10,
-          "name": "Yormandi Tongue"
-        },
-        {
-          "qty": 20,
-          "name": "Yormandi Eye"
-        },
-        {
-          "qty": 3,
-          "name": "Irradiated Valakkar Pearl (Grade AAA)"
-        },
-        {
-          "qty": 3,
-          "name": "Carinite (Pure)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image40.png",
-      "image_credit": "📷 Kaarzah"
-    },
-    {
-      "name": "Pulse",
-      "mission": "Pulse Plus",
-      "requirements": [
-        {
-          "qty": 4,
-          "name": "Wikelo Favor"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image44.png",
-      "image_credit": "📷 Kaarzah"
-    },
-    {
-      "name": "RAFT",
-      "mission": "Unnamed Contract",
-      "requirements": [
-        {
-          "qty": 8,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 10,
-          "name": "Irradiated Valakkar Fang (Adult)"
-        },
-        {
-          "qty": 20,
-          "name": "Irradiated Valakkar Fang (Juvenile)"
-        },
-        {
-          "qty": 5,
-          "name": "Irradiated Kopion Horn"
-        },
-        {
-          "qty": 1,
-          "name": "Irradiated Valakkar Pearl (Grade AAA)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image35.png",
-      "image_credit": "📷 BEEZZZ69"
-    },
-    {
-      "name": "RSI Meteor",
-      "mission": "RSI Meteor Mod",
-      "requirements": [
-        {
-          "qty": 10,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 1,
-          "name": "Large Artifact Fragment (Pristine)"
-        },
-        {
-          "qty": 10,
-          "name": "Vanduul Plating"
-        },
-        {
-          "qty": 10,
-          "name": "Vanduul Metal"
-        },
-        {
-          "qty": 5,
-          "name": "Ace Interceptor Helmet"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image46.png",
-      "image_credit": "📷 BEEZZZ69"
-    },
-    {
-      "name": "Sabre Firebird",
-      "mission": "Firebird Mod",
-      "requirements": [
-        {
-          "qty": 15,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 4,
-          "name": "DCHS-05 Comp-Board"
-        },
-        {
-          "qty": 3,
-          "name": "Ace Interceptor Helmet"
-        },
-        {
-          "qty": 1,
-          "name": "Government Cartography Agency Medal (Pristine)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image56.png",
-      "image_credit": "📷 WrathUnfaded"
-    },
-    {
-      "name": "Sabre Peregrine",
-      "mission": "Peregrine Wikelo Mod",
-      "requirements": [
-        {
-          "qty": 4,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 1,
-          "name": "DCHS-05 Comp-Board"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image59.png",
-      "image_credit": "📷 MrWinterFox"
-    },
-    {
-      "name": "Scorpius",
-      "mission": "Build a Mod Scorpius",
-      "requirements": [
-        {
-          "qty": 15,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 1,
-          "name": "Tevarin War Service Medal (Pristine)"
-        },
-        {
-          "qty": 4,
-          "name": "DCHS-05 Comp-Board"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image31.png",
-      "image_credit": "📷 DeDukeYT"
-    },
-    {
-      "name": "Starlancer MAX",
-      "mission": "More than a Max",
-      "requirements": [
-        {
-          "qty": 30,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 10,
-          "name": "Ace Interceptor Helmet"
-        },
-        {
-          "qty": 3,
-          "name": "Carinite (Pure)"
-        },
-        {
-          "qty": 3,
-          "name": "Irradiated Valakkar Pearl (Grade AAA)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image53.png",
-      "image_credit": "📷 WayfinderDrax"
-    },
-    {
-      "name": "Starlancer TAC",
-      "mission": "New Move Big Starlancer Ship",
-      "requirements": [
-        {
-          "qty": 50,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 30,
-          "name": "ASD Secure Drive"
-        },
-        {
-          "qty": 15,
-          "name": "Ace Interceptor Helmet"
-        },
-        {
-          "qty": 3,
-          "name": "Irradiated Valakkar Pearl (Grade AAA)"
-        },
-        {
-          "qty": 3,
-          "name": "Tevarin War Service Marker (Pristine)"
-        },
-        {
-          "qty": 3,
-          "name": "Carinite (Pure)"
-        },
-        {
-          "qty": 3,
-          "name": "DCHS-05 Comp-Board"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image67.png",
-      "image_credit": "📷 CivicDoody"
-    },
-    {
-      "name": "Super Hornet Mk II",
-      "mission": "Wikelo Navy F7",
-      "requirements": [
-        {
-          "qty": 16,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 3,
-          "name": "DCHS-05 Comp-Board"
-        },
-        {
-          "qty": 5,
-          "name": "Ace Interceptor Helmet"
-        },
-        {
-          "qty": 1,
-          "name": "Government Cartography Agency Medal (Pristine)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image51.png",
-      "image_credit": "📷 LordVanyaK"
-    },
-    {
-      "name": "Terrapin Medic",
-      "mission": "What is Terrapin?",
-      "requirements": [
-        {
-          "qty": 15,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 10,
-          "name": "ASD Secure Drive"
-        },
-        {
-          "qty": 1,
-          "name": "Tevarin War Service Marker (Pristine)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image54.png",
-      "image_credit": "📷 Guardian_Templar"
-    },
-    {
-      "name": "Ursa Medivac",
-      "mission": "Make a Ursa Mod",
-      "requirements": [
-        {
-          "qty": 4,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 20,
-          "name": "Saldynium"
-        },
-        {
-          "qty": 20,
-          "name": "Jaclium"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image19.png",
-      "image_credit": "📷 Hughezy"
-    },
-    {
-      "name": "Zeus CL",
-      "mission": "Zeus Cargo Special",
-      "requirements": [
-        {
-          "qty": 20,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 17,
-          "name": "Carinite (Pure)"
-        },
-        {
-          "qty": 10,
-          "name": "Ace Interceptor Helmet"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image37.png",
-      "image_credit": "📷 Me"
-    },
-    {
-      "name": "Zeus ES",
-      "mission": "Zeus Special",
-      "requirements": [
-        {
-          "qty": 10,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 1,
-          "name": "UEE 6th Platoon Medal (Pristine)"
-        }
-      ],
-      "sheet": "Ships 4.7",
-      "image_url": "images/image45.png",
-      "image_credit": "📷 Slim_Syaddy"
-    }
-  ],
-  "Gear": [
-    {
-      "name": "Ana Armor Endro",
-      "mission": "Armor With Horn And String\n\nReward:\nAna Armor Helmet Endro + Ana Armor Arms Endro + Ana Armor Core Endro + Ana Armor Legs Endro",
-      "requirements": [
-        {
-          "qty": 1,
-          "name": "Carinite (Pure)"
-        },
-        {
-          "qty": 1,
-          "name": "Antium Base Set"
-        }
-      ],
-      "sheet": "Ana Endro Armor 4.5"
-    },
-    {
-      "name": "Bokto Armor",
-      "mission": "Make glowy armor",
-      "requirements": [
-        {
-          "qty": 1,
-          "name": "Irradiated Valakkar Pearl (Grade AAA)"
-        },
-        {
-          "qty": 1,
-          "name": "Antium Arms"
-        },
-        {
-          "qty": 1,
-          "name": "Antium Legs"
-        },
-        {
-          "qty": 1,
-          "name": "Antium Core"
-        },
-        {
-          "qty": 1,
-          "name": "Antium Helmet"
-        }
-      ],
-      "sheet": "Bokto Armor 4.5"
-    },
-    {
-      "name": "Corbel \"Crush\" Set",
-      "mission": "Shiny Builder Suit",
-      "requirements": [
-        {
-          "qty": 10,
-          "name": "ASD Secure Drive"
-        },
-        {
-          "qty": 1,
-          "name": "Corbel Set Mire (Helmet, Core, Legs, Arms)"
-        },
-        {
-          "qty": 1,
-          "name": "Novikov Backpack Mire"
-        },
-        {
-          "qty": 3,
-          "name": "RCMBNT-RGL-1"
-        },
-        {
-          "qty": 3,
-          "name": "RCMBNT-RGL-2"
-        },
-        {
-          "qty": 3,
-          "name": "RCMBNT-RGL-3"
-        }
-      ],
-      "sheet": " Corbel Crush & Fresnel 4.7"
-    },
-    {
-      "name": "Geist \"Snow Camo\" Armor Set",
-      "mission": "Hide Snow Suit",
-      "requirements": [
-        {
-          "qty": 4,
-          "name": "ASD Secure Drive"
-        },
-        {
-          "qty": 1,
-          "name": "Geist Armor Arms ASD Edition"
-        },
-        {
-          "qty": 1,
-          "name": "Geist Armor Core ASD Edition"
-        },
-        {
-          "qty": 1,
-          "name": "Geist Armor Helmet ASD Edition"
-        },
-        {
-          "qty": 1,
-          "name": "Geist Armor Legs ASD Edition"
-        },
-        {
-          "qty": 1,
-          "name": "Geist Armor Backpack ASD Edition"
-        }
-      ],
-      "sheet": "Snow Armor & Sniper 4.5"
-    },
-    {
-      "name": "Glowy Armor",
-      "mission": "Make glowy armor",
-      "requirements": [
-        {
-          "qty": 1,
-          "name": "Irradiated Valakkar Pearl (Grade AAA)"
-        },
-        {
-          "qty": 1,
-          "name": "Antium Base Set"
-        }
-      ],
-      "sheet": "Glowy Armor 4.5"
-    },
-    {
-      "name": "Monde Set Crimson Camo",
-      "mission": "Red Fight Armor",
-      "requirements": [
-        {
-          "qty": 3,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 10,
-          "name": "Sadaryx"
-        },
-        {
-          "qty": 1,
-          "name": "Monde Helmet"
-        },
-        {
-          "qty": 1,
-          "name": "Monde Core"
-        },
-        {
-          "qty": 1,
-          "name": "Monde Arms"
-        },
-        {
-          "qty": 1,
-          "name": "Monde Legs"
-        },
-        {
-          "qty": 1,
-          "name": "Warden Backpack Monde"
-        }
-      ],
-      "sheet": "Crimson Camo Monde Armor & R97 "
-    },
-    {
-      "name": "Palatino Mark I",
-      "mission": "Test Armor",
-      "requirements": [
-        {
-          "qty": 14,
-          "name": "Yormandi Eye"
-        },
-        {
-          "qty": 7,
-          "name": "Yormandi Tongue"
-        },
-        {
-          "qty": 1,
-          "name": "Palatino Helmet"
-        },
-        {
-          "qty": 1,
-          "name": "Palatino Arms"
-        },
-        {
-          "qty": 1,
-          "name": "Palatino Legs"
-        },
-        {
-          "qty": 1,
-          "name": "Palatino Core"
-        },
-        {
-          "qty": 1,
-          "name": "Palatino Backpack"
-        }
-      ],
-      "sheet": "Palatino Mark I & F55 Mark I 4."
-    },
-    {
-      "name": "Strata \"Heatwave\" Armor Set",
-      "mission": "Do Lava Suit",
-      "requirements": [
-        {
-          "qty": 30,
-          "name": "Carinite"
-        },
-        {
-          "qty": 4,
-          "name": "RCMBNT-PWL-1"
-        },
-        {
-          "qty": 4,
-          "name": "RCMBNT-PWL-2"
-        },
-        {
-          "qty": 4,
-          "name": "RCMBNT-PWL-3"
-        },
-        {
-          "qty": 1,
-          "name": "Strata Arms"
-        },
-        {
-          "qty": 1,
-          "name": "Strata Legs"
-        },
-        {
-          "qty": 1,
-          "name": "Strata Helmet"
-        },
-        {
-          "qty": 1,
-          "name": "Strata Backpack"
-        },
-        {
-          "qty": 1,
-          "name": "Strata Core"
-        }
-      ],
-      "sheet": "Strata \"Heatwave\" Armor 4.6"
-    },
-    {
-      "name": "Testudo Set Clanguard",
-      "mission": "Armor with Vanduul",
-      "requirements": [
-        {
-          "qty": 15,
-          "name": "Vanduul Plating"
-        },
-        {
-          "qty": 15,
-          "name": "Vanduul Metal"
-        },
-        {
-          "qty": 1,
-          "name": "Testudo Helmet Turfwar"
-        },
-        {
-          "qty": 1,
-          "name": "Testudo Arms Turfwar"
-        },
-        {
-          "qty": 1,
-          "name": "Testudo Legs Turfwar"
-        },
-        {
-          "qty": 1,
-          "name": "Testudo Core Turfwar"
-        },
-        {
-          "qty": 1,
-          "name": "Testudo Backpack Turfwar"
-        }
-      ],
-      "sheet": "Testudo & BoomTube Clanguard 4."
-    }
-  ],
-  "Weapons": [
-    {
-      "name": "Boomtube \"Clanguard\" Rocket Launcher",
-      "mission": "Curious Weapon",
-      "requirements": [
-        {
-          "qty": 1,
-          "name": "Boomtube Rocket Launcher"
-        },
-        {
-          "qty": 2,
-          "name": "Vanduul Plating"
-        },
-        {
-          "qty": 2,
-          "name": "Vanduul Metal"
-        }
-      ],
-      "sheet": "Testudo & BoomTube Clanguard 4."
-    },
-    {
-      "name": "F55 Mark I",
-      "mission": "F55 Look Better",
-      "requirements": [
-        {
-          "qty": 1,
-          "name": "F55 LMG"
-        },
-        {
-          "qty": 4,
-          "name": "Yormandi Eye"
-        },
-        {
-          "qty": 2,
-          "name": "Yormandi Tongue"
-        },
-        {
-          "qty": 20,
-          "name": "Carinite"
-        }
-      ],
-      "sheet": "Palatino Mark I & F55 Mark I 4."
-    },
-    {
-      "name": "Fresnel \"Deepwater\" Energy LMG",
-      "mission": "Heavy Volt Zapper",
-      "requirements": [
-        {
-          "qty": 5,
-          "name": "ASD Secure Drive"
-        },
-        {
-          "qty": 1,
-          "name": "Fresnel Energy LMG"
-        },
-        {
-          "qty": 5,
-          "name": "RCMBNT-XTL-1"
-        },
-        {
-          "qty": 5,
-          "name": "RCMBNT-XTL-2"
-        },
-        {
-          "qty": 5,
-          "name": "RCMBNT-XTL-3"
-        }
-      ],
-      "sheet": " Corbel Crush & Fresnel 4.7"
-    },
-    {
-      "name": "Fresnel \"Yormandi\" Energy LMG",
-      "mission": "Yormandi Gun",
-      "requirements": [
-        {
-          "qty": 1,
-          "name": "Fresnel Energy LMG"
-        },
-        {
-          "qty": 6,
-          "name": "Yormandi Eye"
-        },
-        {
-          "qty": 3,
-          "name": "Yormandi Tongue"
-        }
-      ],
-      "sheet": "Fresnel \"Yormandi\" LMG 4.5"
-    },
-    {
-      "name": "Parallax \"Fun Kopion Skull\" Energy Assault Rifle",
-      "mission": "Fun Military Skull Gun",
-      "requirements": [
-        {
-          "qty": 20,
-          "name": "Jaclium"
-        },
-        {
-          "qty": 1,
-          "name": "Parallax Energy Assault Rifle"
-        },
-        {
-          "qty": 20,
-          "name": "Tundra Kopion Horn"
-        },
-        {
-          "qty": 15,
-          "name": "Saldynium"
-        },
-        {
-          "qty": 10,
-          "name": "Carinite"
-        },
-        {
-          "qty": 1,
-          "name": "Parallax \"Fun Military Skull\" Energy Assault Rifle"
-        },
-        {
-          "qty": 20,
-          "name": "Irradiated Valakkar Fang (Juvenile)"
-        }
-      ],
-      "sheet": "Parallax ARs 4.5"
-    },
-    {
-      "name": "Parallax \"Fun Kopion Tooth\" Energy Assault Rifle",
-      "mission": "Fun Military Tooth Gun",
-      "requirements": [
-        {
-          "qty": 40,
-          "name": "Jaclium"
-        },
-        {
-          "qty": 1,
-          "name": "Parallax Energy Assault Rifle"
-        },
-        {
-          "qty": 35,
-          "name": "Tundra Kopion Horn"
-        },
-        {
-          "qty": 30,
-          "name": "Saldynium"
-        },
-        {
-          "qty": 20,
-          "name": "Carinite"
-        },
-        {
-          "qty": 35,
-          "name": "Irradiated Valakkar Fang (Juvenile)"
-        }
-      ],
-      "sheet": "Parallax ARs 4.5"
-    },
-    {
-      "name": "Prism \"Irradiated\" Laser Shotgun",
-      "mission": "Make VOLT shotgun angier",
-      "requirements": [
-        {
-          "qty": 10,
-          "name": "Irradiated Valakkar Fang (Adult)"
-        },
-        {
-          "qty": 5,
-          "name": "Irradiated Valakkar Fang (Juvenile)"
-        },
-        {
-          "qty": 1,
-          "name": "Prism Laser Shotgun"
-        }
-      ],
-      "sheet": "Prism Shotgun 4.5"
-    },
-    {
-      "name": "R97 \"Crimson Camo\" Shotgun",
-      "mission": "Red Fight Shotgun",
-      "requirements": [
-        {
-          "qty": 1,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 10,
-          "name": "Sadaryx"
-        },
-        {
-          "qty": 1,
-          "name": "R97 Shotgun"
-        }
-      ],
-      "sheet": "Crimson Camo Monde Armor & R97 "
-    },
-    {
-      "name": "Tripledown \"Heatwave\" Pistol",
-      "mission": "Hot Shot",
-      "requirements": [
-        {
-          "qty": 20,
-          "name": "Carinite"
-        },
-        {
-          "qty": 20,
-          "name": "Bluemoon Fungus"
-        },
-        {
-          "qty": 1,
-          "name": "Tripledown Pistol"
-        }
-      ],
-      "sheet": "Tripledown \"Heatwave\" 4.6"
-    },
-    {
-      "name": "Zenith \"Snow Camo\" Laser Sniper Rifle",
-      "mission": "Snow Snipe",
-      "requirements": [
-        {
-          "qty": 7,
-          "name": "ASD Secure Drive"
-        },
-        {
-          "qty": 1,
-          "name": "Zenith Laser Sniper Rifle"
-        }
-      ],
-      "sheet": "Snow Armor & Sniper 4.5"
-    }
-  ],
-  "Misc": [
-    {
-      "name": "ATLS IKTI",
-      "mission": "Make ATLS shoot",
-      "requirements": [
-        {
-          "qty": 1,
-          "name": "Argo ATLS"
-        },
-        {
-          "qty": 2,
-          "name": "NN-13 Cannon"
-        },
-        {
-          "qty": 5,
-          "name": "Irradiated Valakkar Fang (Apex)"
-        },
-        {
-          "qty": 3,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 1,
-          "name": "ATLS Skins"
-        },
-        {
-          "qty": 1,
-          "name": "ATLS Snowland"
-        },
-        {
-          "qty": 1,
-          "name": "ATLS Orange Line"
-        },
-        {
-          "qty": 1,
-          "name": "Irradiated Valakkar Pearl (Grade AAA)"
-        },
-        {
-          "qty": 36,
-          "name": "Quantanium"
-        },
-        {
-          "qty": 8,
-          "name": "SCU Copper, Tungsten, Corundum"
-        }
-      ],
-      "sheet": "ATLS IKTI (GEO) 4.5"
-    },
-    {
-      "name": "ATLS IKTI GEO",
-      "mission": "Make jumpy ATLS shoot",
-      "requirements": [
-        {
-          "qty": 1,
-          "name": "Argo ATLS GEO"
-        },
-        {
-          "qty": 1,
-          "name": "Argo ATLS IKTI"
-        },
-        {
-          "qty": 2,
-          "name": "NN-13 Cannon"
-        },
-        {
-          "qty": 1,
-          "name": "Wikelo Favor"
-        },
-        {
-          "qty": 1,
-          "name": "ATLS Cool Metal"
-        },
-        {
-          "qty": 1,
-          "name": "Carinite (Pure)"
-        },
-        {
-          "qty": 1,
-          "name": "Argo ATLS"
-        }
-      ],
-      "sheet": "ATLS IKTI (GEO) 4.5"
-    }
-  ]
-};
-const BASE_CATEGORIES = {
-  "rep_currency": {
-    "title": "Reputation & Scrip",
-    "items": [
-      "Wikelo Favor",
-      "MG Scrip",
-      "Council Scrip",
-      "ASD Secure Drive",
-      "Polaris Bit"
-    ]
-  },
-  "ores_mats": {
-    "title": "Ores & Minerals",
-    "items": [
-      "Carinite",
-      "Carinite (Pure)",
-      "Saldynium",
-      "Jaclium",
-      "Sadaryx",
-      "Bluemoon Fungus",
-      "SCU Copper, Tungsten, Corundum"
-    ]
-  },
-  "medals_tech": {
-    "title": "Medals & Tech Relics",
-    "items": [
-      "DCHS-05 Comp-Board",
-      "Large Artifact Fragment (Pristine)",
-      "Government Cartography Agency Medal (Pristine)",
-      "Tevarin War Service Marker (Pristine)",
-      "Tevarin War Service Medal (Pristine)",
-      "UEE 6th Platoon Medal (Pristine)",
-      "Pristine Medal",
-      "Ace Interceptor Helmet"
-    ]
-  },
-  "fauna_loot": {
-    "title": "Creature & Fauna Loot",
-    "items": [
-      "Tundra Kopion Horn",
-      "Snow Kopion Horn",
-      "Desert Kopion Horn",
-      "Irradiated Kopion Horn",
-      "Valakkar Pearls",
-      "Valakkar Fangs",
-      "Irradiated Valakkar Pearl (Grade AA)",
-      "Irradiated Valakkar Pearl (Grade AAA)",
-      "Irradiated Valakkar Fang (Adult)",
-      "Irradiated Valakkar Fang (Juvenile)",
-      "Irradiated Valakkar Fang (Apex)",
-      "Yormandi Eye",
-      "Yormandi Tongue"
-    ]
-  },
-  "base_components": {
-    "title": "Base Gear & Components",
-    "items": [
-      "ATLS Cool Metal",
-      "ATLS Orange Line",
-      "ATLS Skins",
-      "ATLS Snowland",
-      "Antium Arms",
-      "Antium Base Set",
-      "Antium Core",
-      "Antium Helmet",
-      "Antium Legs",
-      "Argo ATLS",
-      "Argo ATLS GEO",
-      "Argo ATLS IKTI",
-      "Boomtube Rocket Launcher",
-      "Corbel Set Mire (Helmet, Core, Legs, Arms)",
-      "F55 LMG",
-      "Fresnel Energy LMG",
-      "Geist Armor Arms ASD Edition",
-      "Geist Armor Backpack ASD Edition",
-      "Geist Armor Core ASD Edition",
-      "Geist Armor Helmet ASD Edition",
-      "Geist Armor Legs ASD Edition",
-      "Monde Arms",
-      "Monde Core",
-      "Monde Helmet",
-      "Monde Legs",
-      "NN-13 Cannon",
-      "Novikov Backpack Mire",
-      "Palatino Arms",
-      "Palatino Backpack",
-      "Palatino Core",
-      "Palatino Helmet",
-      "Palatino Legs",
-      "Parallax \"Fun Military Skull\" Energy Assault Rifle",
-      "Parallax Energy Assault Rifle",
-      "Prism Laser Shotgun",
-      "Quantanium",
-      "R97 Shotgun",
-      "RCMBNT-PWL-1",
-      "RCMBNT-PWL-2",
-      "RCMBNT-PWL-3",
-      "RCMBNT-RGL-1",
-      "RCMBNT-RGL-2",
-      "RCMBNT-RGL-3",
-      "RCMBNT-XTL-1",
-      "RCMBNT-XTL-2",
-      "RCMBNT-XTL-3",
-      "Strata Arms",
-      "Strata Backpack",
-      "Strata Core",
-      "Strata Helmet",
-      "Strata Legs",
-      "Testudo Arms Turfwar",
-      "Testudo Backpack Turfwar",
-      "Testudo Core Turfwar",
-      "Testudo Helmet Turfwar",
-      "Testudo Legs Turfwar",
-      "Tripledown Pistol",
-      "Vanduul Metal",
-      "Vanduul Plating",
-      "Warden Backpack Monde",
-      "Zenith Laser Sniper Rifle"
-    ]
-  }
-};
+const WIKELO_DATABASE = {"Ships": [{"name": "A2 Hercules", "mission": "Starlifter A2 War Mod", "requirements": [{"qty": 50, "name": "Wikelo Favor"}, {"qty": 20, "name": "Polaris Bit"}, {"qty": 20, "name": "MG Scrip"}, {"qty": 6, "name": "ASD Secure Drive"}, {"qty": 6, "name": "Irradiated Valakkar Pearl (Grade AAA)"}, {"qty": 6, "name": "Tevarin War Service Marker (Pristine)"}, {"qty": 6, "name": "DCHS-05 Comp-Board"}, {"qty": 6, "name": "Carinite (Pure)"}], "sheet": "Ships 4.7", "image_url": "images/image48.png", "image_credit": "📷 Au999"}, {"name": "Ares Inferno", "mission": "Starfighter Inferno Special", "requirements": [{"qty": 10, "name": "Wikelo Favor"}, {"qty": 5, "name": "Yormandi Tongue"}, {"qty": 5, "name": "Ace Interceptor Helmet"}, {"qty": 1, "name": "UEE 6th Platoon Medal (Pristine)"}], "sheet": "Ships 4.7", "image_url": "images/image66.png", "image_credit": "📷 Kaarzah"}, {"name": "Ares Ion", "mission": "Sneaky Starfighter Ion", "requirements": [{"qty": 10, "name": "Wikelo Favor"}, {"qty": 10, "name": "Yormandi Eye"}, {"qty": 5, "name": "Ace Interceptor Helmet"}, {"qty": 1, "name": "Tevarin War Service Marker (Pristine)"}], "sheet": "Ships 4.7", "image_url": "images/image32.png", "image_credit": "📷 Kaarzah"}, {"name": "Asgard", "mission": "Unnamed Contract", "requirements": [{"qty": 50, "name": "Wikelo Favor"}, {"qty": 5, "name": "RCMBNT-PWL-1"}, {"qty": 5, "name": "RCMBNT-PWL-2"}, {"qty": 5, "name": "RCMBNT-PWL-3"}, {"qty": 5, "name": "RCMBNT-RGL-1"}, {"qty": 5, "name": "RCMBNT-RGL-2"}, {"qty": 5, "name": "RCMBNT-RGL-3"}, {"qty": 5, "name": "RCMBNT-XTL-1"}, {"qty": 5, "name": "RCMBNT-XTL-2"}, {"qty": 5, "name": "RCMBNT-XTL-3"}, {"qty": 3, "name": "ASD Secure Drive"}], "sheet": "Ships 4.7", "image_url": "images/image50.png", "image_credit": "📷 LazyBrokOli"}, {"name": "C1 Spirit", "mission": "Spirit Cargo mod", "requirements": [{"qty": 8, "name": "Wikelo Favor"}, {"qty": 1, "name": "Tevarin War Service Marker (Pristine)"}], "sheet": "Ships 4.7", "image_url": "images/image2.png", "image_credit": "📷 Me"}, {"name": "Constellation Taurus", "mission": "Want Tanrus ship", "requirements": [{"qty": 30, "name": "Wikelo Favor"}, {"qty": 3, "name": "Carinite (Pure)"}, {"qty": 3, "name": "Irradiated Valakkar Pearl (Grade AAA)"}, {"qty": 3, "name": "Government Cartography Agency Medal (Pristine)"}], "sheet": "Ships 4.7", "image_url": "images/image34.png", "image_credit": "📷 DeDukeYT"}, {"name": "F8C Lightning Military", "mission": "F8 War Special", "requirements": [{"qty": 40, "name": "Wikelo Favor"}, {"qty": 4, "name": "Carinite (Pure)"}, {"qty": 4, "name": "Irradiated Valakkar Pearl (Grade AAA)"}, {"qty": 4, "name": "Tevarin War Service Marker (Pristine)"}], "sheet": "Ships 4.7", "image_url": "images/image39.png", "image_credit": "📷 Fr0zeN1"}, {"name": "F8C Lightning Stealth", "mission": "Sneaky Stabber", "requirements": [{"qty": 40, "name": "Wikelo Favor"}, {"qty": 15, "name": "DCHS-05 Comp-Board"}, {"qty": 3, "name": "Carinite (Pure)"}, {"qty": 3, "name": "Irradiated Valakkar Pearl (Grade AAA)"}], "sheet": "Ships 4.7", "image_url": "images/image65.png", "image_credit": "📷 DeDukeYT"}, {"name": "Fortune", "mission": "Fortune ship for you", "requirements": [{"qty": 3, "name": "Wikelo Favor"}, {"qty": 1, "name": "Carinite (Pure)"}], "sheet": "Ships 4.7", "image_url": "images/image24.png", "image_credit": "📷 lLenartowy"}, {"name": "Golem", "mission": "Golem Rocks", "requirements": [{"qty": 2, "name": "Wikelo Favor"}, {"qty": 15, "name": "ASD Secure Drive"}], "sheet": "Ships 4.7", "image_url": "images/image60.png", "image_credit": "📷 Kaarzah"}, {"name": "Guardian", "mission": "Guardian Fight Mod", "requirements": [{"qty": 20, "name": "Wikelo Favor"}, {"qty": 15, "name": "Irradiated Valakkar Pearl (Grade AA)"}, {"qty": 10, "name": "Ace Interceptor Helmet"}, {"qty": 1, "name": "Tevarin War Service Marker (Pristine)"}], "sheet": "Ships 4.7", "image_url": "images/image47.png", "image_credit": "📷 Hughezy"}, {"name": "Guardian QI", "mission": "Guardian take down ship", "requirements": [{"qty": 25, "name": "Wikelo Favor"}, {"qty": 15, "name": "DCHS-05 Comp-Board"}, {"qty": 15, "name": "Irradiated Valakkar Pearl (Grade AA)"}, {"qty": 2, "name": "UEE 6th Platoon Medal (Pristine)"}], "sheet": "Ships 4.7", "image_url": "images/image42.png", "image_credit": "📷 Kaarzah"}, {"name": "Intrepid", "mission": "Upgrade Intrepid", "requirements": [{"qty": 3, "name": "Wikelo Favor"}, {"qty": 1, "name": "Government Cartography Agency Medal (Pristine)"}], "sheet": "Ships 4.7", "image_url": "images/image36.png", "image_credit": "📷 Me, Dssfox"}, {"name": "L-21 Wolf Military + Gear", "mission": "Unnamed Contract", "requirements": [{"qty": 5, "name": "Wikelo Favor"}], "sheet": "Ships 4.7", "image_url": "images/image30.png", "image_credit": "📷 LazyBrokOli"}, {"name": "L-21 Wolf Stealth", "mission": "Unnamed Contract", "requirements": [{"qty": 10, "name": "Wikelo Favor"}, {"qty": 10, "name": "Vanduul Plating"}, {"qty": 10, "name": "Vanduul Metal"}, {"qty": 1, "name": "Large Artifact Fragment (Pristine)"}], "sheet": "Ships 4.7", "image_url": "images/image49.png", "image_credit": "📷 Slim_Syaddy"}, {"name": "Mirai Guardian MX", "mission": "Mirai Guardian MX Wikelo War Special", "requirements": [{"qty": 25, "name": "Wikelo Favor"}, {"qty": 2, "name": "Large Artifact Fragment (Pristine)"}, {"qty": 30, "name": "Vanduul Plating"}, {"qty": 30, "name": "Vanduul Metal"}, {"qty": 15, "name": "Ace Interceptor Helmet"}], "sheet": "Ships 4.7", "image_url": "images/image33.png", "image_credit": "📷 BEEZZZ69"}, {"name": "Nox", "mission": "Noxy Mod", "requirements": [{"qty": 4, "name": "Wikelo Favor"}], "sheet": "Ships 4.7", "image_url": "images/image27.png", "image_credit": "📷 WrathUnfaded"}, {"name": "Prospector", "mission": "Unnamed Contract", "requirements": [{"qty": 6, "name": "Wikelo Favor"}, {"qty": 20, "name": "Carinite"}, {"qty": 30, "name": "Saldynium"}, {"qty": 40, "name": "Jaclium"}, {"qty": 1, "name": "Carinite (Pure)"}], "sheet": "Ships 4.7", "image_url": "images/image63.png", "image_credit": "📷 BEEZZZ69"}, {"name": "Prowler Utility", "mission": "Prowler More Utility", "requirements": [{"qty": 40, "name": "Wikelo Favor"}, {"qty": 10, "name": "Yormandi Tongue"}, {"qty": 20, "name": "Yormandi Eye"}, {"qty": 3, "name": "Irradiated Valakkar Pearl (Grade AAA)"}, {"qty": 3, "name": "Carinite (Pure)"}], "sheet": "Ships 4.7", "image_url": "images/image40.png", "image_credit": "📷 Kaarzah"}, {"name": "Pulse", "mission": "Pulse Plus", "requirements": [{"qty": 4, "name": "Wikelo Favor"}], "sheet": "Ships 4.7", "image_url": "images/image44.png", "image_credit": "📷 Kaarzah"}, {"name": "RAFT", "mission": "Unnamed Contract", "requirements": [{"qty": 8, "name": "Wikelo Favor"}, {"qty": 10, "name": "Irradiated Valakkar Fang (Adult)"}, {"qty": 20, "name": "Irradiated Valakkar Fang (Juvenile)"}, {"qty": 5, "name": "Irradiated Kopion Horn"}, {"qty": 1, "name": "Irradiated Valakkar Pearl (Grade AAA)"}], "sheet": "Ships 4.7", "image_url": "images/image35.png", "image_credit": "📷 BEEZZZ69"}, {"name": "RSI Meteor", "mission": "RSI Meteor Mod", "requirements": [{"qty": 10, "name": "Wikelo Favor"}, {"qty": 1, "name": "Large Artifact Fragment (Pristine)"}, {"qty": 10, "name": "Vanduul Plating"}, {"qty": 10, "name": "Vanduul Metal"}, {"qty": 5, "name": "Ace Interceptor Helmet"}], "sheet": "Ships 4.7", "image_url": "images/image46.png", "image_credit": "📷 BEEZZZ69"}, {"name": "Sabre Firebird", "mission": "Firebird Mod", "requirements": [{"qty": 15, "name": "Wikelo Favor"}, {"qty": 4, "name": "DCHS-05 Comp-Board"}, {"qty": 3, "name": "Ace Interceptor Helmet"}, {"qty": 1, "name": "Government Cartography Agency Medal (Pristine)"}], "sheet": "Ships 4.7", "image_url": "images/image56.png", "image_credit": "📷 WrathUnfaded"}, {"name": "Sabre Peregrine", "mission": "Peregrine Wikelo Mod", "requirements": [{"qty": 4, "name": "Wikelo Favor"}, {"qty": 1, "name": "DCHS-05 Comp-Board"}], "sheet": "Ships 4.7", "image_url": "images/image59.png", "image_credit": "📷 MrWinterFox"}, {"name": "Scorpius", "mission": "Build a Mod Scorpius", "requirements": [{"qty": 15, "name": "Wikelo Favor"}, {"qty": 1, "name": "Tevarin War Service Medal (Pristine)"}, {"qty": 4, "name": "DCHS-05 Comp-Board"}], "sheet": "Ships 4.7", "image_url": "images/image31.png", "image_credit": "📷 DeDukeYT"}, {"name": "Starlancer MAX", "mission": "More than a Max", "requirements": [{"qty": 30, "name": "Wikelo Favor"}, {"qty": 10, "name": "Ace Interceptor Helmet"}, {"qty": 3, "name": "Carinite (Pure)"}, {"qty": 3, "name": "Irradiated Valakkar Pearl (Grade AAA)"}], "sheet": "Ships 4.7", "image_url": "images/image53.png", "image_credit": "📷 WayfinderDrax"}, {"name": "Starlancer TAC", "mission": "New Move Big Starlancer Ship", "requirements": [{"qty": 50, "name": "Wikelo Favor"}, {"qty": 30, "name": "ASD Secure Drive"}, {"qty": 15, "name": "Ace Interceptor Helmet"}, {"qty": 3, "name": "Irradiated Valakkar Pearl (Grade AAA)"}, {"qty": 3, "name": "Tevarin War Service Marker (Pristine)"}, {"qty": 3, "name": "Carinite (Pure)"}, {"qty": 3, "name": "DCHS-05 Comp-Board"}], "sheet": "Ships 4.7", "image_url": "images/image67.png", "image_credit": "📷 CivicDoody"}, {"name": "Super Hornet Mk II", "mission": "Wikelo Navy F7", "requirements": [{"qty": 16, "name": "Wikelo Favor"}, {"qty": 3, "name": "DCHS-05 Comp-Board"}, {"qty": 5, "name": "Ace Interceptor Helmet"}, {"qty": 1, "name": "Government Cartography Agency Medal (Pristine)"}], "sheet": "Ships 4.7", "image_url": "images/image51.png", "image_credit": "📷 LordVanyaK"}, {"name": "Terrapin Medic", "mission": "What is Terrapin?", "requirements": [{"qty": 15, "name": "Wikelo Favor"}, {"qty": 10, "name": "ASD Secure Drive"}, {"qty": 1, "name": "Tevarin War Service Marker (Pristine)"}], "sheet": "Ships 4.7", "image_url": "images/image54.png", "image_credit": "📷 Guardian_Templar"}, {"name": "Ursa Medivac", "mission": "Make a Ursa Mod", "requirements": [{"qty": 4, "name": "Wikelo Favor"}, {"qty": 20, "name": "Saldynium"}, {"qty": 20, "name": "Jaclium"}], "sheet": "Ships 4.7", "image_url": "images/image19.png", "image_credit": "📷 Hughezy"}, {"name": "Zeus CL", "mission": "Zeus Cargo Special", "requirements": [{"qty": 20, "name": "Wikelo Favor"}, {"qty": 17, "name": "Carinite (Pure)"}, {"qty": 10, "name": "Ace Interceptor Helmet"}], "sheet": "Ships 4.7", "image_url": "images/image37.png", "image_credit": "📷 Me"}, {"name": "Zeus ES", "mission": "Zeus Special", "requirements": [{"qty": 10, "name": "Wikelo Favor"}, {"qty": 1, "name": "UEE 6th Platoon Medal (Pristine)"}], "sheet": "Ships 4.7", "image_url": "images/image45.png", "image_credit": "📷 Slim_Syaddy"}], "Gear": [{"name": "Ana Armor Endro", "mission": "Armor With Horn And String\n\nReward:\nAna Armor Helmet Endro + Ana Armor Arms Endro + Ana Armor Core Endro + Ana Armor Legs Endro", "requirements": [{"qty": 1, "name": "Carinite (Pure)"}, {"qty": 1, "name": "Antium Base Set"}], "sheet": "Ana Endro Armor 4.5"}, {"name": "Bokto Armor", "mission": "Make glowy armor", "requirements": [{"qty": 1, "name": "Irradiated Valakkar Pearl (Grade AAA)"}, {"qty": 1, "name": "Antium Arms"}, {"qty": 1, "name": "Antium Legs"}, {"qty": 1, "name": "Antium Core"}, {"qty": 1, "name": "Antium Helmet"}], "sheet": "Bokto Armor 4.5"}, {"name": "Corbel \"Crush\" Set", "mission": "Shiny Builder Suit", "requirements": [{"qty": 10, "name": "ASD Secure Drive"}, {"qty": 1, "name": "Corbel Set Mire (Helmet, Core, Legs, Arms)"}, {"qty": 1, "name": "Novikov Backpack Mire"}, {"qty": 3, "name": "RCMBNT-RGL-1"}, {"qty": 3, "name": "RCMBNT-RGL-2"}, {"qty": 3, "name": "RCMBNT-RGL-3"}], "sheet": " Corbel Crush & Fresnel 4.7"}, {"name": "Geist \"Snow Camo\" Armor Set", "mission": "Hide Snow Suit", "requirements": [{"qty": 4, "name": "ASD Secure Drive"}, {"qty": 1, "name": "Geist Armor Arms ASD Edition"}, {"qty": 1, "name": "Geist Armor Core ASD Edition"}, {"qty": 1, "name": "Geist Armor Helmet ASD Edition"}, {"qty": 1, "name": "Geist Armor Legs ASD Edition"}, {"qty": 1, "name": "Geist Armor Backpack ASD Edition"}], "sheet": "Snow Armor & Sniper 4.5"}, {"name": "Glowy Armor", "mission": "Make glowy armor", "requirements": [{"qty": 1, "name": "Irradiated Valakkar Pearl (Grade AAA)"}, {"qty": 1, "name": "Antium Base Set"}], "sheet": "Glowy Armor 4.5"}, {"name": "Monde Set Crimson Camo", "mission": "Red Fight Armor", "requirements": [{"qty": 3, "name": "Wikelo Favor"}, {"qty": 10, "name": "Sadaryx"}, {"qty": 1, "name": "Monde Helmet"}, {"qty": 1, "name": "Monde Core"}, {"qty": 1, "name": "Monde Arms"}, {"qty": 1, "name": "Monde Legs"}, {"qty": 1, "name": "Warden Backpack Monde"}], "sheet": "Crimson Camo Monde Armor & R97 "}, {"name": "Palatino Mark I", "mission": "Test Armor", "requirements": [{"qty": 14, "name": "Yormandi Eye"}, {"qty": 7, "name": "Yormandi Tongue"}, {"qty": 1, "name": "Palatino Helmet"}, {"qty": 1, "name": "Palatino Arms"}, {"qty": 1, "name": "Palatino Legs"}, {"qty": 1, "name": "Palatino Core"}, {"qty": 1, "name": "Palatino Backpack"}], "sheet": "Palatino Mark I & F55 Mark I 4."}, {"name": "Strata \"Heatwave\" Armor Set", "mission": "Do Lava Suit", "requirements": [{"qty": 30, "name": "Carinite"}, {"qty": 4, "name": "RCMBNT-PWL-1"}, {"qty": 4, "name": "RCMBNT-PWL-2"}, {"qty": 4, "name": "RCMBNT-PWL-3"}, {"qty": 1, "name": "Strata Arms"}, {"qty": 1, "name": "Strata Legs"}, {"qty": 1, "name": "Strata Helmet"}, {"qty": 1, "name": "Strata Backpack"}, {"qty": 1, "name": "Strata Core"}], "sheet": "Strata \"Heatwave\" Armor 4.6"}, {"name": "Testudo Set Clanguard", "mission": "Armor with Vanduul", "requirements": [{"qty": 15, "name": "Vanduul Plating"}, {"qty": 15, "name": "Vanduul Metal"}, {"qty": 1, "name": "Testudo Helmet Turfwar"}, {"qty": 1, "name": "Testudo Arms Turfwar"}, {"qty": 1, "name": "Testudo Legs Turfwar"}, {"qty": 1, "name": "Testudo Core Turfwar"}, {"qty": 1, "name": "Testudo Backpack Turfwar"}], "sheet": "Testudo & BoomTube Clanguard 4."}], "Weapons": [{"name": "Boomtube \"Clanguard\" Rocket Launcher", "mission": "Curious Weapon", "requirements": [{"qty": 1, "name": "Boomtube Rocket Launcher"}, {"qty": 2, "name": "Vanduul Plating"}, {"qty": 2, "name": "Vanduul Metal"}], "sheet": "Testudo & BoomTube Clanguard 4."}, {"name": "F55 Mark I", "mission": "F55 Look Better", "requirements": [{"qty": 1, "name": "F55 LMG"}, {"qty": 4, "name": "Yormandi Eye"}, {"qty": 2, "name": "Yormandi Tongue"}, {"qty": 20, "name": "Carinite"}], "sheet": "Palatino Mark I & F55 Mark I 4."}, {"name": "Fresnel \"Deepwater\" Energy LMG", "mission": "Heavy Volt Zapper", "requirements": [{"qty": 5, "name": "ASD Secure Drive"}, {"qty": 1, "name": "Fresnel Energy LMG"}, {"qty": 5, "name": "RCMBNT-XTL-1"}, {"qty": 5, "name": "RCMBNT-XTL-2"}, {"qty": 5, "name": "RCMBNT-XTL-3"}], "sheet": " Corbel Crush & Fresnel 4.7"}, {"name": "Fresnel \"Yormandi\" Energy LMG", "mission": "Yormandi Gun", "requirements": [{"qty": 1, "name": "Fresnel Energy LMG"}, {"qty": 6, "name": "Yormandi Eye"}, {"qty": 3, "name": "Yormandi Tongue"}], "sheet": "Fresnel \"Yormandi\" LMG 4.5"}, {"name": "Parallax \"Fun Kopion Skull\" Energy Assault Rifle", "mission": "Fun Military Skull Gun", "requirements": [{"qty": 20, "name": "Jaclium"}, {"qty": 1, "name": "Parallax Energy Assault Rifle"}, {"qty": 20, "name": "Tundra Kopion Horn"}, {"qty": 15, "name": "Saldynium"}, {"qty": 10, "name": "Carinite"}, {"qty": 1, "name": "Parallax \"Fun Military Skull\" Energy Assault Rifle"}, {"qty": 20, "name": "Irradiated Valakkar Fang (Juvenile)"}], "sheet": "Parallax ARs 4.5"}, {"name": "Parallax \"Fun Kopion Tooth\" Energy Assault Rifle", "mission": "Fun Military Tooth Gun", "requirements": [{"qty": 40, "name": "Jaclium"}, {"qty": 1, "name": "Parallax Energy Assault Rifle"}, {"qty": 35, "name": "Tundra Kopion Horn"}, {"qty": 30, "name": "Saldynium"}, {"qty": 20, "name": "Carinite"}, {"qty": 35, "name": "Irradiated Valakkar Fang (Juvenile)"}], "sheet": "Parallax ARs 4.5"}, {"name": "Prism \"Irradiated\" Laser Shotgun", "mission": "Make VOLT shotgun angier", "requirements": [{"qty": 10, "name": "Irradiated Valakkar Fang (Adult)"}, {"qty": 5, "name": "Irradiated Valakkar Fang (Juvenile)"}, {"qty": 1, "name": "Prism Laser Shotgun"}], "sheet": "Prism Shotgun 4.5"}, {"name": "R97 \"Crimson Camo\" Shotgun", "mission": "Red Fight Shotgun", "requirements": [{"qty": 1, "name": "Wikelo Favor"}, {"qty": 10, "name": "Sadaryx"}, {"qty": 1, "name": "R97 Shotgun"}], "sheet": "Crimson Camo Monde Armor & R97 "}, {"name": "Tripledown \"Heatwave\" Pistol", "mission": "Hot Shot", "requirements": [{"qty": 20, "name": "Carinite"}, {"qty": 20, "name": "Bluemoon Fungus"}, {"qty": 1, "name": "Tripledown Pistol"}], "sheet": "Tripledown \"Heatwave\" 4.6"}, {"name": "Zenith \"Snow Camo\" Laser Sniper Rifle", "mission": "Snow Snipe", "requirements": [{"qty": 7, "name": "ASD Secure Drive"}, {"qty": 1, "name": "Zenith Laser Sniper Rifle"}], "sheet": "Snow Armor & Sniper 4.5"}], "Misc": [{"name": "ATLS IKTI", "mission": "Make ATLS shoot", "requirements": [{"qty": 1, "name": "Argo ATLS"}, {"qty": 2, "name": "NN-13 Cannon"}, {"qty": 5, "name": "Irradiated Valakkar Fang (Apex)"}, {"qty": 3, "name": "Wikelo Favor"}, {"qty": 1, "name": "ATLS Skins"}, {"qty": 1, "name": "ATLS Snowland"}, {"qty": 1, "name": "ATLS Orange Line"}, {"qty": 1, "name": "Irradiated Valakkar Pearl (Grade AAA)"}, {"qty": 36, "name": "Quantanium"}, {"qty": 8, "name": "SCU Copper, Tungsten, Corundum"}], "sheet": "ATLS IKTI (GEO) 4.5"}, {"name": "ATLS IKTI GEO", "mission": "Make jumpy ATLS shoot", "requirements": [{"qty": 1, "name": "Argo ATLS GEO"}, {"qty": 1, "name": "Argo ATLS IKTI"}, {"qty": 2, "name": "NN-13 Cannon"}, {"qty": 1, "name": "Wikelo Favor"}, {"qty": 1, "name": "ATLS Cool Metal"}, {"qty": 1, "name": "Carinite (Pure)"}, {"qty": 1, "name": "Argo ATLS"}], "sheet": "ATLS IKTI (GEO) 4.5"}]};
+const BASE_CATEGORIES = {"rep_currency": {"title": "Reputation & Scrip", "items": ["Wikelo Favor", "MG Scrip", "Council Scrip", "ASD Secure Drive", "Polaris Bit"]}, "ores_mats": {"title": "Ores & Minerals", "items": ["Carinite", "Carinite (Pure)", "Saldynium", "Jaclium", "Sadaryx", "Bluemoon Fungus", "SCU Copper, Tungsten, Corundum"]}, "medals_tech": {"title": "Medals & Tech Relics", "items": ["DCHS-05 Comp-Board", "Large Artifact Fragment (Pristine)", "Government Cartography Agency Medal (Pristine)", "Tevarin War Service Marker (Pristine)", "Tevarin War Service Medal (Pristine)", "UEE 6th Platoon Medal (Pristine)", "Pristine Medal", "Ace Interceptor Helmet"]}, "fauna_loot": {"title": "Creature & Fauna Loot", "items": ["Tundra Kopion Horn", "Snow Kopion Horn", "Desert Kopion Horn", "Irradiated Kopion Horn", "Valakkar Pearls", "Valakkar Fangs", "Irradiated Valakkar Pearl (Grade AA)", "Irradiated Valakkar Pearl (Grade AAA)", "Irradiated Valakkar Fang (Adult)", "Irradiated Valakkar Fang (Juvenile)", "Irradiated Valakkar Fang (Apex)", "Yormandi Eye", "Yormandi Tongue"]}, "base_components": {"title": "Base Gear & Components", "items": ["ATLS Cool Metal", "ATLS Orange Line", "ATLS Skins", "ATLS Snowland", "Antium Arms", "Antium Base Set", "Antium Core", "Antium Helmet", "Antium Legs", "Argo ATLS", "Argo ATLS GEO", "Argo ATLS IKTI", "Boomtube Rocket Launcher", "Corbel Set Mire (Helmet, Core, Legs, Arms)", "F55 LMG", "Fresnel Energy LMG", "Geist Armor Arms ASD Edition", "Geist Armor Backpack ASD Edition", "Geist Armor Core ASD Edition", "Geist Armor Helmet ASD Edition", "Geist Armor Legs ASD Edition", "Monde Arms", "Monde Core", "Monde Helmet", "Monde Legs", "NN-13 Cannon", "Novikov Backpack Mire", "Palatino Arms", "Palatino Backpack", "Palatino Core", "Palatino Helmet", "Palatino Legs", "Parallax \"Fun Military Skull\" Energy Assault Rifle", "Parallax Energy Assault Rifle", "Prism Laser Shotgun", "Quantanium", "R97 Shotgun", "RCMBNT-PWL-1", "RCMBNT-PWL-2", "RCMBNT-PWL-3", "RCMBNT-RGL-1", "RCMBNT-RGL-2", "RCMBNT-RGL-3", "RCMBNT-XTL-1", "RCMBNT-XTL-2", "RCMBNT-XTL-3", "Strata Arms", "Strata Backpack", "Strata Core", "Strata Helmet", "Strata Legs", "Testudo Arms Turfwar", "Testudo Backpack Turfwar", "Testudo Core Turfwar", "Testudo Helmet Turfwar", "Testudo Legs Turfwar", "Tripledown Pistol", "Vanduul Metal", "Vanduul Plating", "Warden Backpack Monde", "Zenith Laser Sniper Rifle"]}};
 
-// App State
 let appState = {
     inventory: {},
     completedItems: [],
     customMaterials: [],
     customCovenants: [],
-    viewMode: 'card'
+    viewMode: 'card',
+    hangar: []
 };
 
 // Initialize the Application
@@ -1542,6 +62,7 @@ function loadState() {
             if (!appState.customMaterials) appState.customMaterials = [];
             if (!appState.customCovenants) appState.customCovenants = [];
             if (!appState.viewMode) appState.viewMode = 'card';
+            if (!appState.hangar) appState.hangar = [];
         } catch (e) {
             console.error("Error loading localStorage", e);
         }
@@ -1645,6 +166,150 @@ function canCraft(item) {
     });
 }
 
+// Toggle row expanded state in List View
+function toggleListRow(event, rowElement) {
+    if (event.target.closest('button') || event.target.closest('input') || event.target.closest('label') || event.target.closest('a')) {
+        return;
+    }
+    rowElement.classList.toggle('expanded');
+}
+
+// Exchange offerings for a covenant (consume materials)
+function exchangeCovenant(itemName) {
+    const mergedDb = getMergedDatabase();
+    let foundItem = null;
+    
+    for (const items of Object.values(mergedDb)) {
+        foundItem = items.find(item => item.name === itemName);
+        if (foundItem) break;
+    }
+    
+    if (!foundItem) {
+        showToast("Covenant not found in database", "warning");
+        return;
+    }
+    
+    if (!canCraft(foundItem)) {
+        showToast("You do not have enough materials to exchange this offering!", "warning");
+        return;
+    }
+    
+    foundItem.requirements.forEach(req => {
+        const owned = appState.inventory[req.name] || 0;
+        appState.inventory[req.name] = Math.max(0, owned - req.qty);
+    });
+    
+    if (!appState.completedItems.includes(itemName)) {
+        appState.completedItems.push(itemName);
+    }
+    
+    const logEntry = {
+        name: foundItem.name,
+        category: foundItem.category || 'Custom',
+        timestamp: new Date().toLocaleString()
+    };
+    appState.hangar.push(logEntry);
+    
+    saveState();
+    
+    showToast(`Successfully exchanged: ${foundItem.name}!`, "success");
+    
+    renderInventorySidebar();
+    renderAll();
+}
+
+// Render My Hangar stats & history logs
+function renderHangarModal() {
+    const statsContainer = document.getElementById('hangar-stats');
+    const listContainer = document.getElementById('hangar-list');
+    if (!statsContainer || !listContainer) return;
+    
+    let totalExchanges = appState.hangar.length;
+    let shipsCount = 0;
+    let gearCount = 0;
+    let weaponsCount = 0;
+    let otherCount = 0;
+    
+    appState.hangar.forEach(item => {
+        if (item.category === 'Ships') shipsCount++;
+        else if (item.category === 'Gear') gearCount++;
+        else if (item.category === 'Weapons') weaponsCount++;
+        else otherCount++;
+    });
+    
+    statsContainer.innerHTML = `
+        <div class="hangar-stat-box">
+            <span class="hangar-stat-count">${totalExchanges}</span>
+            <span class="hangar-stat-lbl">Total Items</span>
+        </div>
+        <div class="hangar-stat-box">
+            <span class="hangar-stat-count">${shipsCount}</span>
+            <span class="hangar-stat-lbl">Vessels</span>
+        </div>
+        <div class="hangar-stat-box">
+            <span class="hangar-stat-count">${gearCount}</span>
+            <span class="hangar-stat-lbl">Armor</span>
+        </div>
+        <div class="hangar-stat-box">
+            <span class="hangar-stat-count">${weaponsCount}</span>
+            <span class="hangar-stat-lbl">Weapons</span>
+        </div>
+    `;
+    
+    if (totalExchanges === 0) {
+        listContainer.innerHTML = '<div class="no-hangar-items">Your Hangar is empty. Complete offerings to exchange them!</div>';
+        return;
+    }
+    
+    const categoryIcons = {
+        'Ships': '🚀',
+        'Gear': '🛡️',
+        'Weapons': '🔫',
+        'Misc': '⚙️',
+        'Custom': '🛠️'
+    };
+    
+    let html = '';
+    for (let i = totalExchanges - 1; i >= 0; i--) {
+        const item = appState.hangar[i];
+        const icon = categoryIcons[item.category] || '📦';
+        html += `
+            <div class="hangar-row">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 16px;">${icon}</span>
+                    <div style="text-align: left;">
+                        <span class="hangar-item-name">${item.name}</span>
+                        <span class="hangar-item-cat">${item.category}</span>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span class="hangar-item-date">${item.timestamp}</span>
+                    <button class="btn-remove-hangar" onclick="removeFromHangar(${i})" title="Delete exchange log">✕</button>
+                </div>
+            </div>
+        `;
+    }
+    listContainer.innerHTML = html;
+}
+
+// Remove an exchange record from Hangar history
+function removeFromHangar(idx) {
+    if (idx < 0 || idx >= appState.hangar.length) return;
+    const item = appState.hangar[idx];
+    
+    if (confirm(`Are you sure you want to remove the exchange record for "${item.name}" from your hangar history?`)) {
+        appState.hangar.splice(idx, 1);
+        
+        const remainingNames = new Set(appState.hangar.map(x => x.name));
+        appState.completedItems = Array.from(remainingNames);
+        
+        saveState();
+        showToast(`Removed log for "${item.name}"`, "success");
+        renderHangarModal();
+        renderAll();
+    }
+}
+
 // Toggle view mode UI text/icon
 function updateViewToggleUI() {
     const btn = document.getElementById('view-toggle-btn');
@@ -1724,8 +389,8 @@ function renderCatalog() {
             
             // Check status filters (OR logic)
             let matchesStatus = false;
-            if (filterReady && isCraftable && !isCompleted) matchesStatus = true;
-            if (filterMissing && !isCraftable && !isCompleted) matchesStatus = true;
+            if (filterReady && isCraftable) matchesStatus = true;
+            if (filterMissing && !isCraftable) matchesStatus = true;
             if (filterCompleted && isCompleted) matchesStatus = true;
             
             return matchesStatus;
@@ -1776,6 +441,7 @@ function renderCatalog() {
                 // List View Row
                 const row = document.createElement('div');
                 row.className = `covenant-list-row ${isCompleted ? 'completed' : ''}`;
+                row.setAttribute('onclick', 'toggleListRow(event, this)');
                 
                 let imageHtml = '';
                 if (item.image_url) {
@@ -1787,36 +453,54 @@ function renderCatalog() {
                 const deleteBtnHtml = isCustom ? 
                     `<button class="btn-delete-custom-cov" onclick="deleteCustomCovenant('${item.name.replace(/'/g, "\\'")}')" title="Delete custom covenant">🗑️</button>` : '';
                 
+                const exchangeCount = appState.hangar.filter(x => x.name === item.name).length;
+                const exchangedBadgeHtml = exchangeCount > 0 ? `<div class="exchanged-count-badge">✓ Exchanged x${exchangeCount}</div>` : '';
+                
                 row.innerHTML = `
-                    <div class="covenant-list-left">
-                        ${imageHtml}
-                        <div class="covenant-list-info">
-                            <h4 class="covenant-list-title">${item.name}</h4>
-                            <span class="covenant-list-mission">Contract: ${item.mission}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="covenant-list-middle">
-                        <div class="covenant-list-reqs-preview" title="${item.requirements.map(r => `${r.name}: ${appState.inventory[r.name] || 0}/${r.qty}`).join(', ')}">
-                            Requirements: ${item.requirements.map(r => r.name).join(', ')}
-                        </div>
-                        <div class="covenant-list-progress-section">
-                            <div class="covenant-list-progress-track">
-                                <div class="covenant-list-progress-bar" style="width: ${pct}%;"></div>
+                    <div class="covenant-list-row-main">
+                        <div class="covenant-list-left">
+                            ${imageHtml}
+                            <div class="covenant-list-info">
+                                <h4 class="covenant-list-title">${item.name}</h4>
+                                <span class="covenant-list-mission">Contract: ${item.mission}</span>
                             </div>
-                            <span class="covenant-list-pct-text">${pct}%</span>
+                        </div>
+                        
+                        <div class="covenant-list-middle">
+                            <div class="covenant-list-progress-section" style="width: 100%;">
+                                <div class="covenant-list-progress-track">
+                                    <div class="covenant-list-progress-bar" style="width: ${pct}%;"></div>
+                                </div>
+                                <span class="covenant-list-pct-text">${pct}%</span>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
+                            ${exchangedBadgeHtml}
+                            ${isCraftable ? '<span class="status-badge ready" style="background: rgba(107, 197, 193, 0.15); color: var(--accent-mint); border: 1px solid rgba(107, 197, 193, 0.3);">Ready</span>' : '<span class="status-badge in-progress">In Progress</span>'}
+                            <span class="chevron-icon">▼</span>
+                            ${deleteBtnHtml}
                         </div>
                     </div>
                     
-                    <div class="covenant-list-right">
-                        <div class="fulfilled-toggle">
-                            <label class="custom-checkbox">
-                                <span class="checkbox-ring"></span>
-                                <input type="checkbox" style="display:none" ${isCompleted ? 'checked' : ''} onchange="toggleComplete('${item.name.replace(/'/g, "\\'")}')">
-                                Fulfill Covenant
-                            </label>
+                    <div class="covenant-list-row-details">
+                        <div class="list-row-details-grid">
+                            <div class="list-row-reqs-col">
+                                <h5>Required Materials</h5>
+                                <ul class="reqs-list">
+                                    ${reqsHtml}
+                                </ul>
+                            </div>
+                            <div class="list-row-actions-col">
+                                ${isCraftable ? `
+                                    <button class="btn-exchange" onclick="exchangeCovenant('${item.name.replace(/'/g, "\\'")}')">
+                                        ⚡ Ready to Exchange
+                                    </button>
+                                ` : `
+                                    <span class="status-badge in-progress">In Progress</span>
+                                `}
+                            </div>
                         </div>
-                        ${deleteBtnHtml}
                     </div>
                 `;
                 grid.appendChild(row);
@@ -1824,6 +508,7 @@ function renderCatalog() {
                 // Card View Card
                 const card = document.createElement('div');
                 card.className = `covenant-card ${isCompleted ? 'completed' : ''}`;
+                card.style.position = 'relative';
                 
                 let imageHtml = '';
                 if (item.image_url) {
@@ -1839,10 +524,14 @@ function renderCatalog() {
                 const deleteBtnHtml = isCustom ? 
                     `<button class="btn-delete-custom-cov-card" onclick="deleteCustomCovenant('${item.name.replace(/'/g, "\\'")}')" title="Delete custom covenant">✕</button>` : '';
                 
+                const exchangeCount = appState.hangar.filter(x => x.name === item.name).length;
+                const exchangedBadgeHtml = exchangeCount > 0 ? `<div class="exchanged-count-badge">✓ Exchanged x${exchangeCount}</div>` : '';
+                
                 card.innerHTML = `
                     ${imageHtml}
                     ${deleteBtnHtml}
-                    <div class="card-header-row">
+                    <div class="card-header-row" style="margin-top: 10px;">
+                        ${exchangedBadgeHtml}
                         <h3 class="card-title">${item.name}</h3>
                     </div>
                     <span class="mission-label">Contract: <strong>${item.mission}</strong></span>
@@ -1861,12 +550,14 @@ function renderCatalog() {
                         ${reqsHtml}
                     </ul>
                     
-                    <div class="fulfilled-toggle">
-                        <label class="custom-checkbox">
-                            <span class="checkbox-ring"></span>
-                            <input type="checkbox" style="display:none" ${isCompleted ? 'checked' : ''} onchange="toggleComplete('${item.name.replace(/'/g, "\\'")}')">
-                            Fulfill Covenant
-                        </label>
+                    <div style="margin-top: 15px; text-align: center;">
+                        ${isCraftable ? `
+                            <button class="btn-exchange" onclick="exchangeCovenant('${item.name.replace(/'/g, "\\'")}')">
+                                ⚡ Ready to Exchange
+                            </button>
+                        ` : `
+                            <span class="status-badge in-progress">In Progress</span>
+                        `}
                     </div>
                 `;
                 grid.appendChild(card);
@@ -2544,6 +1235,24 @@ function bindEvents() {
             } catch (e) {
                 showToast("Error decoding data: " + e.message, "warning");
             }
+        });
+    }
+
+    // Hangar Modal events
+    const hangarBtn = document.getElementById('hangar-btn');
+    const hangarModal = document.getElementById('hangar-modal');
+    const closeHangarModal = document.getElementById('close-hangar-modal');
+    
+    if (hangarBtn && hangarModal && closeHangarModal) {
+        hangarBtn.addEventListener('click', () => {
+            renderHangarModal();
+            hangarModal.classList.add('open');
+        });
+        closeHangarModal.addEventListener('click', () => {
+            hangarModal.classList.remove('open');
+        });
+        hangarModal.addEventListener('click', (e) => {
+            if (e.target === hangarModal) hangarModal.classList.remove('open');
         });
     }
 }

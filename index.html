@@ -83,15 +83,15 @@
                 <div class="checkbox-filters-group status-group">
                     <span class="filter-group-label">Status:</span>
                     <label class="filter-checkbox-label">
-                        <input type="checkbox" id="filter-ready" class="status-filter-checkbox" checked>
+                        <input type="checkbox" id="filter-ready" class="status-filter-checkbox">
                         <span class="checkbox-custom"></span> Ready to Exchange
                     </label>
                     <label class="filter-checkbox-label">
                         <input type="checkbox" id="filter-missing" class="status-filter-checkbox" checked>
-                        <span class="checkbox-custom"></span> Missing Materials
+                        <span class="checkbox-custom"></span> In Progress
                     </label>
                     <label class="filter-checkbox-label">
-                        <input type="checkbox" id="filter-completed" class="status-filter-checkbox" checked>
+                        <input type="checkbox" id="filter-completed" class="status-filter-checkbox">
                         <span class="checkbox-custom"></span> Completed
                     </label>
                 </div>
@@ -140,8 +140,9 @@
                 </div>
                 
                 <div class="sidebar-actions">
-                    <button class="action-btn" id="creator-btn" style="margin-bottom: 5px;">🛠️ Creator Sanctuary</button>
-                    <button class="action-btn secondary" id="backup-btn">Backup / Restore</button>
+                    <button class="action-btn" id="hangar-btn" style="margin-bottom: 5px;">🏆 My Hangar</button>
+                    <button class="action-btn secondary" id="creator-btn" style="margin-bottom: 5px;">🛠️ Creator Sanctuary</button>
+                    <button class="action-btn secondary" id="backup-btn" style="margin-bottom: 5px;">Backup / Restore</button>
                     <button class="action-btn danger" id="reset-btn">Reset All Inventory</button>
                 </div>
             </aside>
@@ -244,6 +245,25 @@
                                 <!-- list of custom materials with delete button -->
                             </ul>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hangar Modal -->
+        <div class="modal-overlay" id="hangar-modal">
+            <div class="luxury-modal hangar-modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">My Hangar</h3>
+                    <button class="close-modal-btn" id="close-hangar-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Your collection of exchanged vessels, armor, and gear.</p>
+                    <div class="hangar-stats" id="hangar-stats">
+                        <!-- Stats here -->
+                    </div>
+                    <div class="hangar-list" id="hangar-list">
+                        <!-- List of exchanged items -->
                     </div>
                 </div>
             </div>
