@@ -1693,12 +1693,21 @@ function bindEvents() {
     
     const mobileFab = document.getElementById('mobile-inv-fab');
     const sidebar = document.getElementById('inventory-sidebar');
+    const closeSidebarBtn = document.getElementById('close-sidebar-btn');
     if (mobileFab && sidebar) {
         mobileFab.addEventListener('click', () => {
             sidebar.classList.toggle('open');
             if (sidebar.classList.contains('open')) {
                 mobileFab.innerText = '✕ Close Inventory';
             } else {
+                mobileFab.innerText = '🎒 Tithe Inventory';
+            }
+        });
+    }
+    if (closeSidebarBtn && sidebar) {
+        closeSidebarBtn.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            if (mobileFab) {
                 mobileFab.innerText = '🎒 Tithe Inventory';
             }
         });

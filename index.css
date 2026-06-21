@@ -691,6 +691,28 @@ body {
 
 .sidebar-header {
     border-bottom: 1px solid var(--border-gold);
+    position: relative;
+}
+
+.close-sidebar-btn {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--text-gray);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+
+.close-sidebar-btn:hover {
+    color: var(--state-warning);
+}
     padding-bottom: 15px;
     margin-bottom: 15px;
 }
@@ -974,7 +996,7 @@ body {
     position: fixed;
     bottom: 25px;
     right: 25px;
-    z-index: 99;
+    z-index: 110;
     background: var(--accent-mint);
     color: #06111a;
     border: none;
@@ -1125,6 +1147,10 @@ body {
         transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 100;
         overflow-y: auto;
+    }
+    
+    .close-sidebar-btn {
+        display: block;
     }
     
     .inventory-sidebar.open {
