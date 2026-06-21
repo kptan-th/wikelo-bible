@@ -74,10 +74,10 @@
             
             <!-- Right Side: The Tithe Sanctuary (Inventory Panel) -->
             <aside class="inventory-sidebar" id="inventory-sidebar">
+                <button class="close-sidebar-btn" id="close-sidebar-btn" onclick="document.getElementById('inventory-sidebar').classList.remove('open'); const fab = document.getElementById('mobile-inv-fab'); if(fab) fab.innerText = '🎒 Tithe Inventory';" title="Close Inventory">✕</button>
                 <div class="sidebar-header">
                     <h2 class="sidebar-title">Tithe Sanctuary</h2>
                     <span class="sidebar-sub">INVENTORY CONTROL</span>
-                    <button class="close-sidebar-btn" id="close-sidebar-btn" title="Close Inventory">✕</button>
                 </div>
                 <p class="sidebar-desc">Specify the quantities of materials in your Freight Elevator to dynamically calculate exchange requirements.</p>
                 
