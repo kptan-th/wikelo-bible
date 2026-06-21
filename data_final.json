@@ -1,0 +1,1361 @@
+{
+  "Ships": [
+    {
+      "name": "A2 Hercules",
+      "mission": "Starlifter A2 War Mod",
+      "requirements": [
+        {
+          "qty": 50,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 20,
+          "name": "Polaris Bit"
+        },
+        {
+          "qty": 20,
+          "name": "MG Scrip"
+        },
+        {
+          "qty": 6,
+          "name": "ASD Secure Drive"
+        },
+        {
+          "qty": 6,
+          "name": "Irradiated Valakkar Pearl (Grade AAA)"
+        },
+        {
+          "qty": 6,
+          "name": "Tevarin War Service Marker (Pristine)"
+        },
+        {
+          "qty": 6,
+          "name": "DCHS-05 Comp-Board"
+        },
+        {
+          "qty": 6,
+          "name": "Carinite (Pure)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image48.png",
+      "image_credit": "📷 Au999"
+    },
+    {
+      "name": "Ares Inferno",
+      "mission": "Starfighter Inferno Special",
+      "requirements": [
+        {
+          "qty": 10,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 5,
+          "name": "Yormandi Tongue"
+        },
+        {
+          "qty": 5,
+          "name": "Ace Interceptor Helmet"
+        },
+        {
+          "qty": 1,
+          "name": "UEE 6th Platoon Medal (Pristine)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image66.png",
+      "image_credit": "📷 Kaarzah"
+    },
+    {
+      "name": "Ares Ion",
+      "mission": "Sneaky Starfighter Ion",
+      "requirements": [
+        {
+          "qty": 10,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 10,
+          "name": "Yormandi Eye"
+        },
+        {
+          "qty": 5,
+          "name": "Ace Interceptor Helmet"
+        },
+        {
+          "qty": 1,
+          "name": "Tevarin War Service Marker (Pristine)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image32.png",
+      "image_credit": "📷 Kaarzah"
+    },
+    {
+      "name": "Asgard",
+      "mission": "Unnamed Contract",
+      "requirements": [
+        {
+          "qty": 50,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 5,
+          "name": "RCMBNT-PWL-1"
+        },
+        {
+          "qty": 5,
+          "name": "RCMBNT-PWL-2"
+        },
+        {
+          "qty": 5,
+          "name": "RCMBNT-PWL-3"
+        },
+        {
+          "qty": 5,
+          "name": "RCMBNT-RGL-1"
+        },
+        {
+          "qty": 5,
+          "name": "RCMBNT-RGL-2"
+        },
+        {
+          "qty": 5,
+          "name": "RCMBNT-RGL-3"
+        },
+        {
+          "qty": 5,
+          "name": "RCMBNT-XTL-1"
+        },
+        {
+          "qty": 5,
+          "name": "RCMBNT-XTL-2"
+        },
+        {
+          "qty": 5,
+          "name": "RCMBNT-XTL-3"
+        },
+        {
+          "qty": 3,
+          "name": "ASD Secure Drive"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image50.png",
+      "image_credit": "📷 LazyBrokOli"
+    },
+    {
+      "name": "C1 Spirit",
+      "mission": "Spirit Cargo mod",
+      "requirements": [
+        {
+          "qty": 8,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 1,
+          "name": "Tevarin War Service Marker (Pristine)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image2.png",
+      "image_credit": "📷 Me"
+    },
+    {
+      "name": "Constellation Taurus",
+      "mission": "Want Tanrus ship",
+      "requirements": [
+        {
+          "qty": 30,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 3,
+          "name": "Carinite (Pure)"
+        },
+        {
+          "qty": 3,
+          "name": "Irradiated Valakkar Pearl (Grade AAA)"
+        },
+        {
+          "qty": 3,
+          "name": "Government Cartography Agency Medal (Pristine)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image34.png",
+      "image_credit": "📷 DeDukeYT"
+    },
+    {
+      "name": "F8C Lightning Military",
+      "mission": "F8 War Special",
+      "requirements": [
+        {
+          "qty": 40,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 4,
+          "name": "Carinite (Pure)"
+        },
+        {
+          "qty": 4,
+          "name": "Irradiated Valakkar Pearl (Grade AAA)"
+        },
+        {
+          "qty": 4,
+          "name": "Tevarin War Service Marker (Pristine)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image39.png",
+      "image_credit": "📷 Fr0zeN1"
+    },
+    {
+      "name": "F8C Lightning Stealth",
+      "mission": "Sneaky Stabber",
+      "requirements": [
+        {
+          "qty": 40,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 15,
+          "name": "DCHS-05 Comp-Board"
+        },
+        {
+          "qty": 3,
+          "name": "Carinite (Pure)"
+        },
+        {
+          "qty": 3,
+          "name": "Irradiated Valakkar Pearl (Grade AAA)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image65.png",
+      "image_credit": "📷 DeDukeYT"
+    },
+    {
+      "name": "Fortune",
+      "mission": "Fortune ship for you",
+      "requirements": [
+        {
+          "qty": 3,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 1,
+          "name": "Carinite (Pure)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image24.png",
+      "image_credit": "📷 lLenartowy"
+    },
+    {
+      "name": "Golem",
+      "mission": "Golem Rocks",
+      "requirements": [
+        {
+          "qty": 2,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 15,
+          "name": "ASD Secure Drive"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image60.png",
+      "image_credit": "📷 Kaarzah"
+    },
+    {
+      "name": "Guardian",
+      "mission": "Guardian Fight Mod",
+      "requirements": [
+        {
+          "qty": 20,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 15,
+          "name": "Irradiated Valakkar Pearl (Grade AA)"
+        },
+        {
+          "qty": 10,
+          "name": "Ace Interceptor Helmet"
+        },
+        {
+          "qty": 1,
+          "name": "Tevarin War Service Marker (Pristine)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image47.png",
+      "image_credit": "📷 Hughezy"
+    },
+    {
+      "name": "Guardian QI",
+      "mission": "Guardian take down ship",
+      "requirements": [
+        {
+          "qty": 25,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 15,
+          "name": "DCHS-05 Comp-Board"
+        },
+        {
+          "qty": 15,
+          "name": "Irradiated Valakkar Pearl (Grade AA)"
+        },
+        {
+          "qty": 2,
+          "name": "UEE 6th Platoon Medal (Pristine)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image42.png",
+      "image_credit": "📷 Kaarzah"
+    },
+    {
+      "name": "Intrepid",
+      "mission": "Upgrade Intrepid",
+      "requirements": [
+        {
+          "qty": 3,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 1,
+          "name": "Government Cartography Agency Medal (Pristine)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image36.png",
+      "image_credit": "📷 Me, Dssfox"
+    },
+    {
+      "name": "L-21 Wolf Military + Gear",
+      "mission": "Unnamed Contract",
+      "requirements": [
+        {
+          "qty": 5,
+          "name": "Wikelo Favor"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image30.png",
+      "image_credit": "📷 LazyBrokOli"
+    },
+    {
+      "name": "L-21 Wolf Stealth",
+      "mission": "Unnamed Contract",
+      "requirements": [
+        {
+          "qty": 10,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 10,
+          "name": "Vanduul Plating"
+        },
+        {
+          "qty": 10,
+          "name": "Vanduul Metal"
+        },
+        {
+          "qty": 1,
+          "name": "Large Artifact Fragment (Pristine)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image49.png",
+      "image_credit": "📷 Slim_Syaddy"
+    },
+    {
+      "name": "Mirai Guardian MX",
+      "mission": "Mirai Guardian MX Wikelo War Special",
+      "requirements": [
+        {
+          "qty": 25,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 2,
+          "name": "Large Artifact Fragment (Pristine)"
+        },
+        {
+          "qty": 30,
+          "name": "Vanduul Plating"
+        },
+        {
+          "qty": 30,
+          "name": "Vanduul Metal"
+        },
+        {
+          "qty": 15,
+          "name": "Ace Interceptor Helmet"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image33.png",
+      "image_credit": "📷 BEEZZZ69"
+    },
+    {
+      "name": "Nox",
+      "mission": "Noxy Mod",
+      "requirements": [
+        {
+          "qty": 4,
+          "name": "Wikelo Favor"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image27.png",
+      "image_credit": "📷 WrathUnfaded"
+    },
+    {
+      "name": "Prospector",
+      "mission": "Unnamed Contract",
+      "requirements": [
+        {
+          "qty": 6,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 20,
+          "name": "Carinite"
+        },
+        {
+          "qty": 30,
+          "name": "Saldynium"
+        },
+        {
+          "qty": 40,
+          "name": "Jaclium"
+        },
+        {
+          "qty": 1,
+          "name": "Carinite (Pure)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image63.png",
+      "image_credit": "📷 BEEZZZ69"
+    },
+    {
+      "name": "Prowler Utility",
+      "mission": "Prowler More Utility",
+      "requirements": [
+        {
+          "qty": 40,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 10,
+          "name": "Yormandi Tongue"
+        },
+        {
+          "qty": 20,
+          "name": "Yormandi Eye"
+        },
+        {
+          "qty": 3,
+          "name": "Irradiated Valakkar Pearl (Grade AAA)"
+        },
+        {
+          "qty": 3,
+          "name": "Carinite (Pure)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image40.png",
+      "image_credit": "📷 Kaarzah"
+    },
+    {
+      "name": "Pulse",
+      "mission": "Pulse Plus",
+      "requirements": [
+        {
+          "qty": 4,
+          "name": "Wikelo Favor"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image44.png",
+      "image_credit": "📷 Kaarzah"
+    },
+    {
+      "name": "RAFT",
+      "mission": "Unnamed Contract",
+      "requirements": [
+        {
+          "qty": 8,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 10,
+          "name": "Irradiated Valakkar Fang (Adult)"
+        },
+        {
+          "qty": 20,
+          "name": "Irradiated Valakkar Fang (Juvenile)"
+        },
+        {
+          "qty": 5,
+          "name": "Irradiated Kopion Horn"
+        },
+        {
+          "qty": 1,
+          "name": "Irradiated Valakkar Pearl (Grade AAA)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image35.png",
+      "image_credit": "📷 BEEZZZ69"
+    },
+    {
+      "name": "RSI Meteor",
+      "mission": "RSI Meteor Mod",
+      "requirements": [
+        {
+          "qty": 10,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 1,
+          "name": "Large Artifact Fragment (Pristine)"
+        },
+        {
+          "qty": 10,
+          "name": "Vanduul Plating"
+        },
+        {
+          "qty": 10,
+          "name": "Vanduul Metal"
+        },
+        {
+          "qty": 5,
+          "name": "Ace Interceptor Helmet"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image46.png",
+      "image_credit": "📷 BEEZZZ69"
+    },
+    {
+      "name": "Sabre Firebird",
+      "mission": "Firebird Mod",
+      "requirements": [
+        {
+          "qty": 15,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 4,
+          "name": "DCHS-05 Comp-Board"
+        },
+        {
+          "qty": 3,
+          "name": "Ace Interceptor Helmet"
+        },
+        {
+          "qty": 1,
+          "name": "Government Cartography Agency Medal (Pristine)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image56.png",
+      "image_credit": "📷 WrathUnfaded"
+    },
+    {
+      "name": "Sabre Peregrine",
+      "mission": "Peregrine Wikelo Mod",
+      "requirements": [
+        {
+          "qty": 4,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 1,
+          "name": "DCHS-05 Comp-Board"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image59.png",
+      "image_credit": "📷 MrWinterFox"
+    },
+    {
+      "name": "Scorpius",
+      "mission": "Build a Mod Scorpius",
+      "requirements": [
+        {
+          "qty": 15,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 1,
+          "name": "Tevarin War Service Medal (Pristine)"
+        },
+        {
+          "qty": 4,
+          "name": "DCHS-05 Comp-Board"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image31.png",
+      "image_credit": "📷 DeDukeYT"
+    },
+    {
+      "name": "Starlancer MAX",
+      "mission": "More than a Max",
+      "requirements": [
+        {
+          "qty": 30,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 10,
+          "name": "Ace Interceptor Helmet"
+        },
+        {
+          "qty": 3,
+          "name": "Carinite (Pure)"
+        },
+        {
+          "qty": 3,
+          "name": "Irradiated Valakkar Pearl (Grade AAA)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image53.png",
+      "image_credit": "📷 WayfinderDrax"
+    },
+    {
+      "name": "Starlancer TAC",
+      "mission": "New Move Big Starlancer Ship",
+      "requirements": [
+        {
+          "qty": 50,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 30,
+          "name": "ASD Secure Drive"
+        },
+        {
+          "qty": 15,
+          "name": "Ace Interceptor Helmet"
+        },
+        {
+          "qty": 3,
+          "name": "Irradiated Valakkar Pearl (Grade AAA)"
+        },
+        {
+          "qty": 3,
+          "name": "Tevarin War Service Marker (Pristine)"
+        },
+        {
+          "qty": 3,
+          "name": "Carinite (Pure)"
+        },
+        {
+          "qty": 3,
+          "name": "DCHS-05 Comp-Board"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image67.png",
+      "image_credit": "📷 CivicDoody"
+    },
+    {
+      "name": "Super Hornet Mk II",
+      "mission": "Wikelo Navy F7",
+      "requirements": [
+        {
+          "qty": 16,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 3,
+          "name": "DCHS-05 Comp-Board"
+        },
+        {
+          "qty": 5,
+          "name": "Ace Interceptor Helmet"
+        },
+        {
+          "qty": 1,
+          "name": "Government Cartography Agency Medal (Pristine)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image51.png",
+      "image_credit": "📷 LordVanyaK"
+    },
+    {
+      "name": "Terrapin Medic",
+      "mission": "What is Terrapin?",
+      "requirements": [
+        {
+          "qty": 15,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 10,
+          "name": "ASD Secure Drive"
+        },
+        {
+          "qty": 1,
+          "name": "Tevarin War Service Marker (Pristine)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image54.png",
+      "image_credit": "📷 Guardian_Templar"
+    },
+    {
+      "name": "Ursa Medivac",
+      "mission": "Make a Ursa Mod",
+      "requirements": [
+        {
+          "qty": 4,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 20,
+          "name": "Saldynium"
+        },
+        {
+          "qty": 20,
+          "name": "Jaclium"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image19.png",
+      "image_credit": "📷 Hughezy"
+    },
+    {
+      "name": "Zeus CL",
+      "mission": "Zeus Cargo Special",
+      "requirements": [
+        {
+          "qty": 20,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 17,
+          "name": "Carinite (Pure)"
+        },
+        {
+          "qty": 10,
+          "name": "Ace Interceptor Helmet"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image37.png",
+      "image_credit": "📷 Me"
+    },
+    {
+      "name": "Zeus ES",
+      "mission": "Zeus Special",
+      "requirements": [
+        {
+          "qty": 10,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 1,
+          "name": "UEE 6th Platoon Medal (Pristine)"
+        }
+      ],
+      "sheet": "Ships 4.7",
+      "image_url": "images/image45.png",
+      "image_credit": "📷 Slim_Syaddy"
+    }
+  ],
+  "Gear": [
+    {
+      "name": "Ana Armor Endro",
+      "mission": "Armor With Horn And String\n\nReward:\nAna Armor Helmet Endro + Ana Armor Arms Endro + Ana Armor Core Endro + Ana Armor Legs Endro",
+      "requirements": [
+        {
+          "qty": 1,
+          "name": "Carinite (Pure)"
+        },
+        {
+          "qty": 1,
+          "name": "Antium Base Set"
+        }
+      ],
+      "sheet": "Ana Endro Armor 4.5"
+    },
+    {
+      "name": "Bokto Armor",
+      "mission": "Make glowy armor",
+      "requirements": [
+        {
+          "qty": 1,
+          "name": "Irradiated Valakkar Pearl (Grade AAA)"
+        },
+        {
+          "qty": 1,
+          "name": "Antium Arms"
+        },
+        {
+          "qty": 1,
+          "name": "Antium Legs"
+        },
+        {
+          "qty": 1,
+          "name": "Antium Core"
+        },
+        {
+          "qty": 1,
+          "name": "Antium Helmet"
+        }
+      ],
+      "sheet": "Bokto Armor 4.5"
+    },
+    {
+      "name": "Corbel \"Crush\" Set",
+      "mission": "Shiny Builder Suit",
+      "requirements": [
+        {
+          "qty": 10,
+          "name": "ASD Secure Drive"
+        },
+        {
+          "qty": 1,
+          "name": "Corbel Set Mire (Helmet, Core, Legs, Arms)"
+        },
+        {
+          "qty": 1,
+          "name": "Novikov Backpack Mire"
+        },
+        {
+          "qty": 3,
+          "name": "RCMBNT-RGL-1"
+        },
+        {
+          "qty": 3,
+          "name": "RCMBNT-RGL-2"
+        },
+        {
+          "qty": 3,
+          "name": "RCMBNT-RGL-3"
+        }
+      ],
+      "sheet": " Corbel Crush & Fresnel 4.7"
+    },
+    {
+      "name": "Geist \"Snow Camo\" Armor Set",
+      "mission": "Hide Snow Suit",
+      "requirements": [
+        {
+          "qty": 4,
+          "name": "ASD Secure Drive"
+        },
+        {
+          "qty": 1,
+          "name": "Geist Armor Arms ASD Edition"
+        },
+        {
+          "qty": 1,
+          "name": "Geist Armor Core ASD Edition"
+        },
+        {
+          "qty": 1,
+          "name": "Geist Armor Helmet ASD Edition"
+        },
+        {
+          "qty": 1,
+          "name": "Geist Armor Legs ASD Edition"
+        },
+        {
+          "qty": 1,
+          "name": "Geist Armor Backpack ASD Edition"
+        }
+      ],
+      "sheet": "Snow Armor & Sniper 4.5"
+    },
+    {
+      "name": "Glowy Armor",
+      "mission": "Make glowy armor",
+      "requirements": [
+        {
+          "qty": 1,
+          "name": "Irradiated Valakkar Pearl (Grade AAA)"
+        },
+        {
+          "qty": 1,
+          "name": "Antium Base Set"
+        }
+      ],
+      "sheet": "Glowy Armor 4.5"
+    },
+    {
+      "name": "Monde Set Crimson Camo",
+      "mission": "Red Fight Armor",
+      "requirements": [
+        {
+          "qty": 3,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 10,
+          "name": "Sadaryx"
+        },
+        {
+          "qty": 1,
+          "name": "Monde Helmet"
+        },
+        {
+          "qty": 1,
+          "name": "Monde Core"
+        },
+        {
+          "qty": 1,
+          "name": "Monde Arms"
+        },
+        {
+          "qty": 1,
+          "name": "Monde Legs"
+        },
+        {
+          "qty": 1,
+          "name": "Warden Backpack Monde"
+        }
+      ],
+      "sheet": "Crimson Camo Monde Armor & R97 "
+    },
+    {
+      "name": "Palatino Mark I",
+      "mission": "Test Armor",
+      "requirements": [
+        {
+          "qty": 14,
+          "name": "Yormandi Eye"
+        },
+        {
+          "qty": 7,
+          "name": "Yormandi Tongue"
+        },
+        {
+          "qty": 1,
+          "name": "Palatino Helmet"
+        },
+        {
+          "qty": 1,
+          "name": "Palatino Arms"
+        },
+        {
+          "qty": 1,
+          "name": "Palatino Legs"
+        },
+        {
+          "qty": 1,
+          "name": "Palatino Core"
+        },
+        {
+          "qty": 1,
+          "name": "Palatino Backpack"
+        }
+      ],
+      "sheet": "Palatino Mark I & F55 Mark I 4."
+    },
+    {
+      "name": "Strata \"Heatwave\" Armor Set",
+      "mission": "Do Lava Suit",
+      "requirements": [
+        {
+          "qty": 30,
+          "name": "Carinite"
+        },
+        {
+          "qty": 4,
+          "name": "RCMBNT-PWL-1"
+        },
+        {
+          "qty": 4,
+          "name": "RCMBNT-PWL-2"
+        },
+        {
+          "qty": 4,
+          "name": "RCMBNT-PWL-3"
+        },
+        {
+          "qty": 1,
+          "name": "Strata Arms"
+        },
+        {
+          "qty": 1,
+          "name": "Strata Legs"
+        },
+        {
+          "qty": 1,
+          "name": "Strata Helmet"
+        },
+        {
+          "qty": 1,
+          "name": "Strata Backpack"
+        },
+        {
+          "qty": 1,
+          "name": "Strata Core"
+        }
+      ],
+      "sheet": "Strata \"Heatwave\" Armor 4.6"
+    },
+    {
+      "name": "Testudo Set Clanguard",
+      "mission": "Armor with Vanduul",
+      "requirements": [
+        {
+          "qty": 15,
+          "name": "Vanduul Plating"
+        },
+        {
+          "qty": 15,
+          "name": "Vanduul Metal"
+        },
+        {
+          "qty": 1,
+          "name": "Testudo Helmet Turfwar"
+        },
+        {
+          "qty": 1,
+          "name": "Testudo Arms Turfwar"
+        },
+        {
+          "qty": 1,
+          "name": "Testudo Legs Turfwar"
+        },
+        {
+          "qty": 1,
+          "name": "Testudo Core Turfwar"
+        },
+        {
+          "qty": 1,
+          "name": "Testudo Backpack Turfwar"
+        }
+      ],
+      "sheet": "Testudo & BoomTube Clanguard 4."
+    }
+  ],
+  "Weapons": [
+    {
+      "name": "Boomtube \"Clanguard\" Rocket Launcher",
+      "mission": "Curious Weapon",
+      "requirements": [
+        {
+          "qty": 1,
+          "name": "Boomtube Rocket Launcher"
+        },
+        {
+          "qty": 2,
+          "name": "Vanduul Plating"
+        },
+        {
+          "qty": 2,
+          "name": "Vanduul Metal"
+        }
+      ],
+      "sheet": "Testudo & BoomTube Clanguard 4."
+    },
+    {
+      "name": "F55 Mark I",
+      "mission": "F55 Look Better",
+      "requirements": [
+        {
+          "qty": 1,
+          "name": "F55 LMG"
+        },
+        {
+          "qty": 4,
+          "name": "Yormandi Eye"
+        },
+        {
+          "qty": 2,
+          "name": "Yormandi Tongue"
+        },
+        {
+          "qty": 20,
+          "name": "Carinite"
+        }
+      ],
+      "sheet": "Palatino Mark I & F55 Mark I 4."
+    },
+    {
+      "name": "Fresnel \"Deepwater\" Energy LMG",
+      "mission": "Heavy Volt Zapper",
+      "requirements": [
+        {
+          "qty": 5,
+          "name": "ASD Secure Drive"
+        },
+        {
+          "qty": 1,
+          "name": "Fresnel Energy LMG"
+        },
+        {
+          "qty": 5,
+          "name": "RCMBNT-XTL-1"
+        },
+        {
+          "qty": 5,
+          "name": "RCMBNT-XTL-2"
+        },
+        {
+          "qty": 5,
+          "name": "RCMBNT-XTL-3"
+        }
+      ],
+      "sheet": " Corbel Crush & Fresnel 4.7"
+    },
+    {
+      "name": "Fresnel \"Yormandi\" Energy LMG",
+      "mission": "Yormandi Gun",
+      "requirements": [
+        {
+          "qty": 1,
+          "name": "Fresnel Energy LMG"
+        },
+        {
+          "qty": 6,
+          "name": "Yormandi Eye"
+        },
+        {
+          "qty": 3,
+          "name": "Yormandi Tongue"
+        }
+      ],
+      "sheet": "Fresnel \"Yormandi\" LMG 4.5"
+    },
+    {
+      "name": "Parallax \"Fun Kopion Skull\" Energy Assault Rifle",
+      "mission": "Fun Military Skull Gun",
+      "requirements": [
+        {
+          "qty": 20,
+          "name": "Jaclium"
+        },
+        {
+          "qty": 1,
+          "name": "Parallax Energy Assault Rifle"
+        },
+        {
+          "qty": 20,
+          "name": "Tundra Kopion Horn"
+        },
+        {
+          "qty": 15,
+          "name": "Saldynium"
+        },
+        {
+          "qty": 10,
+          "name": "Carinite"
+        },
+        {
+          "qty": 1,
+          "name": "Parallax \"Fun Military Skull\" Energy Assault Rifle"
+        },
+        {
+          "qty": 20,
+          "name": "Irradiated Valakkar Fang (Juvenile)"
+        }
+      ],
+      "sheet": "Parallax ARs 4.5"
+    },
+    {
+      "name": "Parallax \"Fun Kopion Tooth\" Energy Assault Rifle",
+      "mission": "Fun Military Tooth Gun",
+      "requirements": [
+        {
+          "qty": 40,
+          "name": "Jaclium"
+        },
+        {
+          "qty": 1,
+          "name": "Parallax Energy Assault Rifle"
+        },
+        {
+          "qty": 35,
+          "name": "Tundra Kopion Horn"
+        },
+        {
+          "qty": 30,
+          "name": "Saldynium"
+        },
+        {
+          "qty": 20,
+          "name": "Carinite"
+        },
+        {
+          "qty": 35,
+          "name": "Irradiated Valakkar Fang (Juvenile)"
+        }
+      ],
+      "sheet": "Parallax ARs 4.5"
+    },
+    {
+      "name": "Prism \"Irradiated\" Laser Shotgun",
+      "mission": "Make VOLT shotgun angier",
+      "requirements": [
+        {
+          "qty": 10,
+          "name": "Irradiated Valakkar Fang (Adult)"
+        },
+        {
+          "qty": 5,
+          "name": "Irradiated Valakkar Fang (Juvenile)"
+        },
+        {
+          "qty": 1,
+          "name": "Prism Laser Shotgun"
+        }
+      ],
+      "sheet": "Prism Shotgun 4.5"
+    },
+    {
+      "name": "R97 \"Crimson Camo\" Shotgun",
+      "mission": "Red Fight Shotgun",
+      "requirements": [
+        {
+          "qty": 1,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 10,
+          "name": "Sadaryx"
+        },
+        {
+          "qty": 1,
+          "name": "R97 Shotgun"
+        }
+      ],
+      "sheet": "Crimson Camo Monde Armor & R97 "
+    },
+    {
+      "name": "Tripledown \"Heatwave\" Pistol",
+      "mission": "Hot Shot",
+      "requirements": [
+        {
+          "qty": 20,
+          "name": "Carinite"
+        },
+        {
+          "qty": 20,
+          "name": "Bluemoon Fungus"
+        },
+        {
+          "qty": 1,
+          "name": "Tripledown Pistol"
+        }
+      ],
+      "sheet": "Tripledown \"Heatwave\" 4.6"
+    },
+    {
+      "name": "Zenith \"Snow Camo\" Laser Sniper Rifle",
+      "mission": "Snow Snipe",
+      "requirements": [
+        {
+          "qty": 7,
+          "name": "ASD Secure Drive"
+        },
+        {
+          "qty": 1,
+          "name": "Zenith Laser Sniper Rifle"
+        }
+      ],
+      "sheet": "Snow Armor & Sniper 4.5"
+    }
+  ],
+  "Misc": [
+    {
+      "name": "ATLS IKTI",
+      "mission": "Make ATLS shoot",
+      "requirements": [
+        {
+          "qty": 1,
+          "name": "Argo ATLS"
+        },
+        {
+          "qty": 2,
+          "name": "NN-13 Cannon"
+        },
+        {
+          "qty": 5,
+          "name": "Irradiated Valakkar Fang (Apex)"
+        },
+        {
+          "qty": 3,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 1,
+          "name": "ATLS Skins"
+        },
+        {
+          "qty": 1,
+          "name": "ATLS Snowland"
+        },
+        {
+          "qty": 1,
+          "name": "ATLS Orange Line"
+        },
+        {
+          "qty": 1,
+          "name": "Irradiated Valakkar Pearl (Grade AAA)"
+        },
+        {
+          "qty": 36,
+          "name": "Quantanium"
+        },
+        {
+          "qty": 8,
+          "name": "SCU Copper, Tungsten, Corundum"
+        }
+      ],
+      "sheet": "ATLS IKTI (GEO) 4.5"
+    },
+    {
+      "name": "ATLS IKTI GEO",
+      "mission": "Make jumpy ATLS shoot",
+      "requirements": [
+        {
+          "qty": 1,
+          "name": "Argo ATLS GEO"
+        },
+        {
+          "qty": 1,
+          "name": "Argo ATLS IKTI"
+        },
+        {
+          "qty": 2,
+          "name": "NN-13 Cannon"
+        },
+        {
+          "qty": 1,
+          "name": "Wikelo Favor"
+        },
+        {
+          "qty": 1,
+          "name": "ATLS Cool Metal"
+        },
+        {
+          "qty": 1,
+          "name": "Carinite (Pure)"
+        },
+        {
+          "qty": 1,
+          "name": "Argo ATLS"
+        }
+      ],
+      "sheet": "ATLS IKTI (GEO) 4.5"
+    }
+  ]
+}
