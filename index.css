@@ -869,10 +869,10 @@ body {
     font-size: 12px;
     color: var(--text-white);
     opacity: 0.85;
-    max-width: 190px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: break-word;
+    flex-grow: 1;
+    padding-right: 8px;
 }
 
 .input-control {
@@ -1450,7 +1450,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    width: 100%;
+    align-items: flex-end;
+    flex-shrink: 0;
 }
 
 .convert-currency-btn {
@@ -1478,15 +1479,15 @@ body {
     color: #ffffff;
 }
 
-.list-row-thumb {{
+.list-row-thumb {
     width: 48px;
     height: 32px;
     border-radius: 4px;
     object-fit: cover;
     border: 1px solid var(--border-gold);
-}}
+}
 
-.list-row-thumb-placeholder {{
+.list-row-thumb-placeholder {
     width: 48px;
     height: 32px;
     border-radius: 4px;
@@ -1496,9 +1497,9 @@ body {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-gold);
     font-size: 14px;
-}}
+}
 
-.btn-delete-custom-cov {{
+.btn-delete-custom-cov {
     background: none;
     border: none;
     color: var(--state-warning);
@@ -1507,14 +1508,14 @@ body {
     opacity: 0.7;
     transition: opacity 0.2s ease, transform 0.2s ease;
     padding: 4px 8px;
-}}
+}
 
-.btn-delete-custom-cov:hover {{
+.btn-delete-custom-cov:hover {
     opacity: 1;
     transform: scale(1.1);
-}}
+}
 
-.btn-delete-custom-cov-card {{
+.btn-delete-custom-cov-card {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -1532,15 +1533,15 @@ body {
     opacity: 0.8;
     transition: all 0.2s ease;
     z-index: 5;
-}}
+}
 
-.btn-delete-custom-cov-card:hover {{
+.btn-delete-custom-cov-card:hover {
     opacity: 1;
     background: var(--state-warning);
     color: #ffffff;
-}}
+}
 
-.req-creator-label {{
+.req-creator-label {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1551,16 +1552,16 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 170px;
-}}
+}
 
-.req-creator-label input {{
+.req-creator-label input {
     cursor: pointer;
-}}
+}
 
 /* Creator Modal Content */
-.creator-modal-content {{
+.creator-modal-content {
     max-width: 600px;
-}}
+}
 
 .creator-tabs {
     display: flex;
