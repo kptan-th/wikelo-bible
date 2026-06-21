@@ -1169,6 +1169,16 @@ body {
 }
 
 @media (max-width: 768px) {
+    .theme-toggle-container {
+        position: relative;
+        top: auto;
+        right: auto;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
+        z-index: 10;
+    }
+
     .brand-title {
         font-size: 28px;
         letter-spacing: 0.15em;
